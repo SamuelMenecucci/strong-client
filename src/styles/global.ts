@@ -1,6 +1,12 @@
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
+    :root {
+        --primary-color: #1b1c37;
+    }
+
+
+
     html {
         @media (max-width: 1080px){
             font-size:93.75% ;
@@ -18,6 +24,7 @@ export const GlobalStyle = createGlobalStyle`
 
         body {
         -webkit-font-smoothing: antialiased;
+        margin: 21px 15px;
         }
         
         body, input, textarea, button {
@@ -30,6 +37,10 @@ export const GlobalStyle = createGlobalStyle`
             font-family: 'Poppins', sans-serif ;
             font-weight:600;
         
+        }
+
+        button {
+            cursor: pointer;
         }
 
     }
