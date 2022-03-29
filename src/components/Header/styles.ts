@@ -1,10 +1,9 @@
 import styled from "styled-components";
 
 export const Container = styled.header`
-  background-color: #1b1c37;
-
-  /* max-width: 1500px; */
-  margin: 21px 15px;
+  background-color: var(--primary-color);
+  /* max-width: 1200px; */
+  margin: auto;
 
   border-radius: 14.42px;
 
