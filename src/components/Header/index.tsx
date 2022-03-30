@@ -2,6 +2,8 @@ import { Container, Content, Links } from "./styles";
 import logoImg from "../../assets/logo.svg";
 
 export function Header() {
+  const currentPage = window.location.pathname;
+
   return (
     <Container>
       <Content>
@@ -12,10 +14,15 @@ export function Header() {
       </Content>
 
       <Links>
-        <a href="">Home</a>
-        <a href="">Vagas</a>
-        <a href="">Feedback</a>
-        <a href="">Sobre nós</a>
+        <a
+          className={currentPage.includes("/home") ? "active" : undefined}
+          href="/home"
+        >
+          Home
+        </a>
+        <a href="#">Vagas</a>
+        <a href="#">Feedback</a>
+        <a href="#">Sobre nós</a>
       </Links>
     </Container>
   );
