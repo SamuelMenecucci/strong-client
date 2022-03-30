@@ -44,5 +44,9 @@ export const Links = styled.div`
     /* &:last-child {
       margin-right: 230px;
     } */
+
+    &.active {
+      border-bottom: 2px solid #b224ef;
+    }
   }
 `;
