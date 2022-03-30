@@ -21,7 +21,7 @@ export function Footer() {
         </a>
       </Links>
 
-      <p>Todos os direitos reservados ₢2022 strONG </p>
+      <p>Todos os direitos reservados ©2022 strONG </p>
     </Container>
   );
 }
