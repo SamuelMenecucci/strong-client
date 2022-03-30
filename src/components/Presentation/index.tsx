@@ -1,5 +1,6 @@
 import { Container } from "./styles";
 import homeImg from "../../assets/home-edit.png";
+import buttonImg from "../../assets/arrow-circle-right.svg";
 
 export function Presentation() {
   return (
@@ -15,7 +16,9 @@ export function Presentation() {
           (Voluntários) que solucionam os respectivos problemas das ONGs.
         </p>
 
-        <button>Cadastre-se</button>
+        <button>
+          Cadastre-se <img src={buttonImg} alt="" />
+        </button>
       </div>
 
       <div className="home-img">
