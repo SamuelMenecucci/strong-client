@@ -24,7 +24,6 @@ export const GlobalStyle = createGlobalStyle`
 
         body {
         -webkit-font-smoothing: antialiased;
-        margin: 21px 15px;
         }
         
         body, input, textarea, button {
