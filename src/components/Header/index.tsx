@@ -20,9 +20,14 @@ export function Header() {
         >
           Home
         </a>
-        <a href="#">Vagas</a>
-        <a href="#">Feedback</a>
-        <a href="#">Sobre nós</a>
+        <a href="/">Vagas</a>
+        <a
+          href="/feedbacks"
+          className={currentPage.includes("/feedbacks") ? "active" : undefined}
+        >
+          Feedback
+        </a>
+        <a href="/">Sobre nós</a>
       </Links>
     </Container>
   );
