@@ -57,6 +57,7 @@ export function RegisterModal({ isOpen, onRequestClose }: ModalProps) {
           id=""
           placeholder="Conte mais sobre a sua instituição"
           onChange={(e) => setOng(e.target.value)}
+          maxLength={300}
         ></textarea>
         <Actions>
           <Button className="modalButtons" type="submit">
