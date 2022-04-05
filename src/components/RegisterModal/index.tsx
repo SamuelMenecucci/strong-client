@@ -41,15 +41,16 @@ export function RegisterModal({ isOpen, onRequestClose }: ModalProps) {
             type="text"
             placeholder="CNPJ"
           />
-          <input type="email" placeholder="E-mail" />
 
-          <input type="password" placeholder="Digite a sua senha" />
           <InputMask
             mask="(99) 99999-9999"
             type="tel"
             placeholder="Seu telefone"
             onChange={(e) => setOng(e.target.value)}
           />
+          <input type="email" placeholder="E-mail" />
+
+          <input type="password" placeholder="Digite a sua senha" />
         </Grid>
 
         <textarea
