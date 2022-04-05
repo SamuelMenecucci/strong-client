@@ -28,7 +28,7 @@ export function Presentation() {
           (Voluntários) que solucionam os respectivos problemas das ONGs.
         </p>
 
-        <Button onClick={handleOpenRegisterModal}>
+        <Button id="register" onClick={handleOpenRegisterModal}>
           Cadastre-se <img src={buttonImg} alt="" />
         </Button>
       </div>

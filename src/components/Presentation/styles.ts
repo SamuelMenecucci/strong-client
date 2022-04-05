@@ -26,6 +26,11 @@ export const Container = styled.div`
       font-weight: 500;
     }
 
+    #register {
+      padding: 16px 50px;
+      min-width: 318px;
+    }
+
     /* button {
       width: 318px;
       padding: 16px 50px;
