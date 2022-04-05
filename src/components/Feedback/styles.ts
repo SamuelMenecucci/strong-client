@@ -1,9 +1,10 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 292.19px;
-  height: 555.4px;
-  padding: 34px 32px;
+  width: 300px;
+  margin: auto;
+  /* height: 500px; */
+  padding: 27px 21px;
   background: rgba(117, 121, 255, 0.2);
   border-radius: 40px;
   position: relative;
@@ -11,14 +12,14 @@ export const Container = styled.div`
   box-shadow: 0 4px 24px 0 #434343;
 `;
 
-export const Text = styled.div``;
+export const Text = styled.div`
+  font-size: 20px;
+`;
 
 export const Info = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  position: absolute;
-  bottom: 43px;
   /* background: red; */
   word-break: break-all;
 
