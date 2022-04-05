@@ -64,10 +64,10 @@ export const GlobalStyle = createGlobalStyle`
     max-width:  900px;
     background-color: #fff;
 
-    padding:  73px 77px ;
+    padding:  30px 77px ;
 
     border-radius:16px ;
-    border: 2px solid var(--purple-color);
+    border: 2px solid var(--blue-color);
 
     position: relative ;
   }
