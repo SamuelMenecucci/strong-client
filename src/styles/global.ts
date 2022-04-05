@@ -3,6 +3,8 @@ import { createGlobalStyle } from "styled-components";
 export const GlobalStyle = createGlobalStyle`
     :root {
         --primary-color: #1b1c37;
+        --purple-color: #b224b2;
+        --blue-color: #7579FF;
     }
 
 
@@ -43,4 +45,31 @@ export const GlobalStyle = createGlobalStyle`
         }
 
     }
+
+    .react-modal-overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .react-modal-content {
+    width: 100%;
+    max-width:  900px;
+    background-color: #fff;
+
+    padding:  73px 77px ;
+
+    border-radius:16px ;
+    border: 2px solid var(--purple-color);
+
+    position: relative ;
+  }
+   
     `;
