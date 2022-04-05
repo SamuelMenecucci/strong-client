@@ -26,7 +26,7 @@ export const Container = styled.div`
       font-weight: 500;
     }
 
-    button {
+    /* button {
       width: 318px;
       padding: 16px 50px;
       border-radius: 16px;
@@ -41,12 +41,12 @@ export const Container = styled.div`
 
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: center; */
 
-      img {
-        margin-left: 10px;
-      }
+    img {
+      margin-left: 10px;
     }
+    /* } */
   }
 
   .home-img {

@@ -1,8 +1,20 @@
 import { Container } from "./styles";
 import homeImg from "../../assets/home-edit.png";
 import buttonImg from "../../assets/arrow-circle-right.svg";
+import { useState } from "react";
+import { RegisterModal } from "../RegisterModal";
+import { Button } from "../Button/index";
 
 export function Presentation() {
+  const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
+
+  function handleOpenRegisterModal() {
+    setIsRegisterModalOpen(true);
+  }
+
+  function handleCloseRegisterModal() {
+    setIsRegisterModalOpen(false);
+  }
   return (
     <Container>
       <div className="be-a-volunteer">
@@ -16,14 +28,19 @@ export function Presentation() {
           (Voluntários) que solucionam os respectivos problemas das ONGs.
         </p>
 
-        <button>
+        <Button onClick={handleOpenRegisterModal}>
           Cadastre-se <img src={buttonImg} alt="" />
-        </button>
+        </Button>
       </div>
 
       <div className="home-img">
         <img src={homeImg} alt="" />
       </div>
+
+      <RegisterModal
+        isOpen={isRegisterModalOpen}
+        onRequestClose={handleCloseRegisterModal}
+      />
     </Container>
   );
 }
