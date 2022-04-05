@@ -12,6 +12,8 @@ export const Container = styled.header`
   align-items: center;
 
   padding: 11px 43px;
+
+  min-width: 1200px;
 `;
 
 export const Content = styled.div`

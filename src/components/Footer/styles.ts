@@ -17,6 +17,8 @@ export const Container = styled.footer`
   padding: 0 32px;
   position: relative;
 
+  min-width: 1200px;
+
   p {
     text-align: center;
     color: #fff;
