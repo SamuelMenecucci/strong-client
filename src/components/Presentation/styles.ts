@@ -29,6 +29,7 @@ export const Container = styled.div`
     #register {
       padding: 16px 50px;
       min-width: 318px;
+      margin-top: 50px;
     }
 
     /* button {

@@ -5,8 +5,6 @@ export const ButtonComponent = styled.button`
 
   border-radius: 16px;
 
-  margin-top: 50px;
-
   background: linear-gradient(to right, #b224ef, #7579ff, #7579ff);
   border: none;
 
