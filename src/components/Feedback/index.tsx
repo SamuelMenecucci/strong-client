@@ -1,7 +1,9 @@
-import { Container, Info, Text } from "./styles";
-import userImg from "../../assets/user.jpg";
+import { Container, Feedbacks, Info, Text } from "./styles";
+import userImg from "../../assets/user.png";
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from "react-responsive-carousel";
 
 export function Feedback() {
   const [feedbacks, setFeedbacks] = useState<any>([]);
@@ -14,18 +16,20 @@ export function Feedback() {
   }, []);
 
   return (
-    <>
+    // <Carousel>
+    <Feedbacks>
       {feedbacks.map((element: any) => {
         return (
           <Container>
             <Text>{element.feedback}</Text>
             <Info>
               <img src={userImg} alt="" />
-              <span>Mundo Gentileza</span>
+              <span>Social Mídia</span>
             </Info>
           </Container>
         );
       })}
-    </>
+    </Feedbacks>
+    // {/* </Carousel> */}
   );
 }
