@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const RegisterForm = styled.form`
   text-align: center;
 
-  button {
+  button.closeButton {
     background: transparent;
     border: none;
     position: absolute;
@@ -17,6 +17,7 @@ export const RegisterForm = styled.form`
     background: -webkit-linear-gradient(var(--purple-color), var(--blue-color));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    margin-bottom: 17px;
   }
 
   input {
@@ -32,14 +33,51 @@ export const RegisterForm = styled.form`
     padding: 10px 10px;
 
     width: 100%;
+
+    margin-bottom: 33px;
+
+    ::placeholder {
+      color: rgba(0, 0, 0, 0.3);
+      font-size: 18px;
+    }
+
+    & + input {
+    }
   }
 
   textarea {
     height: 205px;
+    width: 100%;
 
     border: 2px solid var(--purple-color);
     border-radius: 16px;
 
     resize: none;
+
+    margin-bottom: 32px;
+
+    padding: 13px 23px;
+
+    ::placeholder {
+      color: rgba(0, 0, 0, 0.3);
+      font-size: 18px;
+    }
+  }
+`;
+
+export const Grid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 33px;
+`;
+
+export const Actions = styled.div`
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+
+  .modalButtons {
+    width: 260px;
+    padding: 6px 10px;
   }
 `;
