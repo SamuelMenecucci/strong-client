@@ -20,7 +20,12 @@ export function Header() {
         >
           Home
         </a>
-        <a href="/">Vagas</a>
+        <a
+          href="/vacancies"
+          className={currentPage.includes("/vacancies") ? "active" : undefined}
+        >
+          Vagas
+        </a>
         <a
           href="/feedbacks"
           className={currentPage.includes("/feedbacks") ? "active" : undefined}
