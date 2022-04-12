@@ -13,7 +13,7 @@ export const ProfileForm = styled.form`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 25px;
+    margin-bottom: 15px;
 
     span {
       display: flex;
@@ -61,14 +61,12 @@ export const ProfileForm = styled.form`
 
     width: 100%;
 
-    margin-bottom: 33px;
+    margin-bottom: 20px;
+    font-size: 22px;
 
     ::placeholder {
       color: rgba(0, 0, 0, 0.3);
       font-size: 18px;
-    }
-
-    & + input {
     }
   }
 
@@ -84,6 +82,9 @@ export const ProfileForm = styled.form`
     margin-bottom: 32px;
 
     padding: 13px 23px;
+
+    margin-bottom: 20px;
+    font-size: 22px;
 
     ::placeholder {
       color: rgba(0, 0, 0, 0.3);
@@ -106,5 +107,16 @@ export const Actions = styled.div`
   .modalButtons {
     width: 260px;
     padding: 6px 10px;
+  }
+`;
+
+export const MyVacancies = styled.div`
+  h1 {
+    font-size: 24px;
+    font-weight: 600;
+    background: -webkit-linear-gradient(var(--purple-color), var(--blue-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 17px;
   }
 `;
