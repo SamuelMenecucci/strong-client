@@ -24,7 +24,7 @@ export function RegisterModal({ isOpen, onRequestClose }: ModalProps) {
       isOpen={isOpen}
       onRequestClose={onRequestClose}
       overlayClassName="react-modal-overlay"
-      className="react-modal-content"
+      className="react-registerModal-content"
     >
       <RegisterForm onSubmit={handleCreateOng}>
         <button className="closeButton" onClick={onRequestClose}>
