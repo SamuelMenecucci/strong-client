@@ -7,8 +7,9 @@ import InputMask from "react-input-mask";
 import { Actions, Grid, ProfileForm } from "./styles";
 import { Button } from "../Button";
 import { PhotosUpload } from "../../Helper";
+import { ModalProps } from "../../shared/models";
 
-export function ProfileModal({ isOpen, onRequestClose }: any) {
+export function ProfileModal({ isOpen, onRequestClose }: ModalProps) {
   return (
     <Modal
       isOpen={isOpen}

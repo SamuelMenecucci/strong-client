@@ -4,11 +4,7 @@ import closeImg from "../../assets/close.svg";
 import { Button } from "../Button";
 import InputMask from "react-input-mask";
 import { FormEvent, useState } from "react";
-
-type ModalProps = {
-  isOpen: boolean;
-  onRequestClose: () => void;
-};
+import { ModalProps } from "../../shared/models";
 
 export function RegisterModal({ isOpen, onRequestClose }: ModalProps) {
   const [ong, setOng] = useState({});
