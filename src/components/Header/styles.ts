@@ -14,6 +14,10 @@ export const Container = styled.header`
   padding: 11px 43px;
 
   min-width: 1200px;
+
+  button.profile {
+    padding: 7px 13px;
+  }
 `;
 
 export const Content = styled.div`

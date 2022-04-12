@@ -1,8 +1,22 @@
 import { Container, Content, Links } from "./styles";
 import logoImg from "../../assets/logo.svg";
+import { Button } from "../Button";
+import profileImg from "../../assets/profile-circle.svg";
+import { useState } from "react";
+import { ProfileModal } from "../ProfileModal";
 
 export function Header() {
   const currentPage = window.location.pathname;
+
+  const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
+
+  function handleOpenProfileModal() {
+    setIsProfileModalOpen(true);
+  }
+
+  function handleCloseProfileModal() {
+    setIsProfileModalOpen(false);
+  }
 
   return (
     <Container>
@@ -34,6 +48,15 @@ export function Header() {
         </a>
         <a href="/">Sobre nós</a>
       </Links>
+
+      <Button className="profile" onClick={handleOpenProfileModal}>
+        <img src={profileImg} alt="" />
+      </Button>
+
+      <ProfileModal
+        isOpen={isProfileModalOpen}
+        onRequestClose={handleCloseProfileModal}
+      />
     </Container>
   );
 }
