@@ -12,11 +12,21 @@ export const ProfileForm = styled.form`
   .name-picture {
     display: flex;
     align-items: center;
-
+    justify-content: space-between;
     margin-bottom: 25px;
 
-    img {
+    span {
+      display: flex;
+      align-items: center;
+    }
+
+    #profileTag {
       margin-right: 15px;
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--purple-color);
     }
   }
 
