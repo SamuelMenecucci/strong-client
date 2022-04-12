@@ -1,12 +1,5 @@
 import styled from "styled-components";
 
-export const Feedbacks = styled.div`
-  display: flex;
-  min-width: 900px;
-  margin: 0 auto;
-  max-width: 1200px;
-`;
-
 export const Container = styled.div`
   width: 300px;
   height: 550px;
