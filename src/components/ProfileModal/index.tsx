@@ -1,10 +1,12 @@
 import Modal from "react-modal";
 import closeImg from "../../assets/close.svg";
 import profileImg from "../../assets/profileInput.svg";
+import editImg from "../../assets/user-edit.svg";
 import InputMask from "react-input-mask";
 
 import { Actions, Grid, ProfileForm } from "./styles";
 import { Button } from "../Button";
+import { PhotosUpload } from "../../Helper";
 
 export function ProfileModal({ isOpen, onRequestClose }: any) {
   return (
@@ -20,16 +22,26 @@ export function ProfileModal({ isOpen, onRequestClose }: any) {
         </button>
 
         <div className="name-picture">
-          <label htmlFor="profileInputImg">
-            <img style={{ cursor: "pointer" }} src={profileImg} alt="" />
-          </label>
-          <input
-            type="file"
-            id="profileInputImg"
-            name="image"
-            accept="image/*"
-          />
-          <input type="text" name="nomeOng" placeholder="Nome da ONG" />
+          <span>
+            <label htmlFor="profileInputImg">
+              <img
+                style={{ cursor: "pointer" }}
+                src={profileImg}
+                alt=""
+                id="profileTag"
+              />
+            </label>
+            <input
+              type="file"
+              id="profileInputImg"
+              name="profilePicture"
+              onChange={(e) => PhotosUpload.handleProfilePicture(e)}
+              accept="image/*"
+            />
+            <input type="text" name="nomeOng" placeholder="Nome da ONG" />
+          </span>
+
+          <img src={editImg} alt="" />
         </div>
 
         <Grid>
