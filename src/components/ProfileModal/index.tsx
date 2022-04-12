@@ -4,12 +4,26 @@ import profileImg from "../../assets/profileInput.svg";
 import editImg from "../../assets/user-edit.svg";
 import InputMask from "react-input-mask";
 
-import { Actions, Grid, ProfileForm } from "./styles";
+import { Actions, Grid, MyVacancies, ProfileForm } from "./styles";
 import { Button } from "../Button";
 import { PhotosUpload } from "../../Helper";
 import { ModalProps } from "../../shared/models";
+import { useRequests } from "../../contexts/useRequests";
+import { useEffect, useState } from "react";
 
 export function ProfileModal({ isOpen, onRequestClose }: ModalProps) {
+  const { ong, setOng } = useRequests();
+  const [isDisabled, setIsDisabled] = useState(false);
+
+  console.log(ong);
+
+  function handleSetDisabled(e: any) {
+    e.preventDefault();
+
+    isDisabled ? setIsDisabled(false) : setIsDisabled(true);
+    console.log(isDisabled);
+  }
+
   return (
     <Modal
       isOpen={isOpen}
@@ -39,10 +53,25 @@ export function ProfileModal({ isOpen, onRequestClose }: ModalProps) {
               onChange={(e) => PhotosUpload.handleProfilePicture(e)}
               accept="image/*"
             />
-            <input type="text" name="nomeOng" placeholder="Nome da ONG" />
+            {isDisabled ? (
+              <h1>{ong.nomeOng}</h1>
+            ) : (
+              <input
+                type="text"
+                name="nomeOng"
+                placeholder="Nome da ONG"
+                value={ong.nomeOng}
+                onChange={(e) => setOng({ ...ong, nomeOng: e.target.value })}
+              />
+            )}
           </span>
 
-          <img src={editImg} alt="" />
+          <button
+            style={{ background: "transparent", border: "none" }}
+            onClick={handleSetDisabled}
+          >
+            <img src={editImg} alt="" />
+          </button>
         </div>
 
         <Grid>
@@ -50,30 +79,57 @@ export function ProfileModal({ isOpen, onRequestClose }: ModalProps) {
             mask="99.999.999./9999-99"
             type="text"
             placeholder="CNPJ"
+            disabled={isDisabled}
+            value={ong.cnpj}
+            onChange={(e) => setOng({ ...ong, cnpj: e.target.value })}
           />
 
           <InputMask
             mask="(99) 99999-9999"
             type="tel"
+            disabled={isDisabled}
+            value={ong.tel}
+            onChange={(e) => setOng({ ...ong, tel: e.target.value })}
             placeholder="Seu telefone"
           />
-          <input type="email" placeholder="E-mail" />
+          <input
+            type="email"
+            placeholder="E-mail"
+            disabled={isDisabled}
+            value={ong.email}
+            onChange={(e) => setOng({ ...ong, email: e.target.value })}
+          />
 
-          <input type="password" placeholder="Digite a sua senha" />
+          <input
+            type="password"
+            placeholder="Digite a sua senha"
+            disabled={isDisabled}
+            value={ong.senha}
+            onChange={(e) => setOng({ ...ong, senha: e.target.value })}
+          />
         </Grid>
 
         <textarea
           name=""
           id=""
           placeholder="Conte mais sobre a sua instituição"
+          disabled={isDisabled}
+          value={ong.description}
+          onChange={(e) => setOng({ ...ong, description: e.target.value })}
           maxLength={300}
         ></textarea>
         <Actions>
-          <Button className="modalButtons" type="submit">
-            Salvar
-          </Button>
+          {!isDisabled && (
+            <Button className="modalButtons" type="submit">
+              Salvar
+            </Button>
+          )}
         </Actions>
       </ProfileForm>
+
+      <MyVacancies>
+        <h1>Suas Vagas</h1>
+      </MyVacancies>
     </Modal>
   );
 }
