@@ -4,15 +4,18 @@ import closeImg from "../../assets/close.svg";
 import { Button } from "../Button";
 import InputMask from "react-input-mask";
 import { FormEvent, useState } from "react";
-import { ModalProps } from "../../shared/models";
+import { ModalProps, OngType } from "../../shared/models";
+import { useRequests } from "../../contexts/useRequests";
 
 export function RegisterModal({ isOpen, onRequestClose }: ModalProps) {
-  const [ong, setOng] = useState({});
+  const [registerOng, setRegisterOng] = useState<OngType>({} as OngType);
 
-  function handleCreateOng(event: FormEvent) {
+  const { createOng } = useRequests();
+
+  async function handleCreateOng(event: FormEvent) {
     event.preventDefault();
 
-    console.log(ong);
+    await createOng(registerOng);
   }
 
   return (
@@ -29,31 +32,57 @@ export function RegisterModal({ isOpen, onRequestClose }: ModalProps) {
 
         <h1>Cadastro</h1>
 
-        <input type="text" placeholder="Nome da ONG" name="NomeOng" />
+        <input
+          type="text"
+          placeholder="Nome da ONG"
+          name="NomeOng"
+          onChange={(e) =>
+            setRegisterOng({ ...registerOng, nomeOng: e.target.value })
+          }
+        />
 
         <Grid>
           <InputMask
             mask="99.999.999./9999-99"
             type="text"
             placeholder="CNPJ"
+            onChange={(e) =>
+              setRegisterOng({ ...registerOng, cnpj: e.target.value })
+            }
           />
 
           <InputMask
             mask="(99) 99999-9999"
             type="tel"
             placeholder="Seu telefone"
-            onChange={(e) => setOng(e.target.value)}
+            onChange={(e) =>
+              setRegisterOng({ ...registerOng, tel: e.target.value })
+            }
           />
-          <input type="email" placeholder="E-mail" />
+          <input
+            type="email"
+            placeholder="E-mail"
+            onChange={(e) =>
+              setRegisterOng({ ...registerOng, email: e.target.value })
+            }
+          />
 
-          <input type="password" placeholder="Digite a sua senha" />
+          <input
+            type="password"
+            placeholder="Digite a sua senha"
+            onChange={(e) =>
+              setRegisterOng({ ...registerOng, senha: e.target.value })
+            }
+          />
         </Grid>
 
         <textarea
           name=""
           id=""
           placeholder="Conte mais sobre a sua instituição"
-          onChange={(e) => setOng(e.target.value)}
+          onChange={(e) =>
+            setRegisterOng({ ...registerOng, description: e.target.value })
+          }
           maxLength={300}
         ></textarea>
         <Actions>
