@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "^0.26.1",
     "json-server": "^0.17.0",
+    "npm-run-all": "^4.1.5",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-input-mask": "^2.0.4",
@@ -34,7 +35,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "server": "json-server server.json -p 5555"
+    "server": "json-server server.json -p 5555",
+    "up": "npm-run-all -p start server"
   },
   "eslintConfig": {
     "extends": [
