@@ -1,12 +1,12 @@
 import Modal from "react-modal";
 import { Actions, Grid, RegisterForm } from "./styles";
-import closeImg from "../../../assets/close.svg";
-import { Button } from "../../Button";
+import { Button } from "../../Buttons/Button";
 import InputMask from "react-input-mask";
 import { FormEvent, useState } from "react";
 import { ModalProps, OngType } from "../../../shared/models";
 import { useRequests } from "../../../contexts/useRequests";
 import { TextareaInput } from "../../Inputs/Textarea/styles";
+import { CloseModalButton } from "../../Buttons/CloseModalButton";
 
 export function RegisterModal({ isOpen, onRequestClose }: ModalProps) {
   const [registerOng, setRegisterOng] = useState<OngType>({} as OngType);
@@ -25,9 +25,7 @@ export function RegisterModal({ isOpen, onRequestClose }: ModalProps) {
       className="react-registerModal-content"
     >
       <RegisterForm onSubmit={handleCreateOng}>
-        <button className="closeButton" onClick={onRequestClose}>
-          <img src={closeImg} alt="" />
-        </button>
+        <CloseModalButton onClick={onRequestClose} />
 
         <h1>Cadastro</h1>
 

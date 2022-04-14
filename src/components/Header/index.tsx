@@ -1,6 +1,6 @@
 import { Container, Content, Links } from "./styles";
 import logoImg from "../../assets/logo.svg";
-import { Button } from "../Button";
+import { Button } from "../Buttons/Button";
 import profileImg from "../../assets/profile-circle.svg";
 import { useState } from "react";
 import { ProfileModal } from "../Modals/ProfileModal";

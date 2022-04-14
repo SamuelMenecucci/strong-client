@@ -3,7 +3,7 @@ import homeImg from "../../assets/home-edit.png";
 import buttonImg from "../../assets/arrow-circle-right.svg";
 import { useState } from "react";
 import { RegisterModal } from "../Modals/RegisterModal";
-import { Button } from "../Button/index";
+import { Button } from ".././Buttons/Button";
 
 export function Presentation() {
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);

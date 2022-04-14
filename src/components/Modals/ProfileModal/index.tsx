@@ -5,7 +5,7 @@ import editImg from "../../../assets/user-edit.svg";
 import InputMask from "react-input-mask";
 
 import { Actions, Grid, MyVacancies, ProfileForm } from "./styles";
-import { Button } from "../../Button";
+import { Button } from "../../Buttons/Button";
 import { PhotosUpload } from "../../../Helper";
 import { ModalProps } from "../../../shared/models";
 import { useRequests } from "../../../contexts/useRequests";
