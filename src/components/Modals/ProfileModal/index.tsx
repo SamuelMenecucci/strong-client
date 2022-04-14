@@ -11,6 +11,7 @@ import { ModalProps } from "../../../shared/models";
 import { useRequests } from "../../../contexts/useRequests";
 import { useState } from "react";
 import { VacancyCard } from "../../Vacancy/VacancyCard";
+import { TextareaInput } from "../../Inputs/Textarea/styles";
 
 export function ProfileModal({ isOpen, onRequestClose }: ModalProps) {
   const { ong, setOng } = useRequests();
@@ -110,7 +111,7 @@ export function ProfileModal({ isOpen, onRequestClose }: ModalProps) {
           />
         </Grid>
 
-        <textarea
+        <TextareaInput
           name=""
           id=""
           placeholder="Conte mais sobre a sua instituição"
@@ -118,7 +119,7 @@ export function ProfileModal({ isOpen, onRequestClose }: ModalProps) {
           value={ong.description}
           onChange={(e) => setOng({ ...ong, description: e.target.value })}
           maxLength={300}
-        ></textarea>
+        />
         <Actions>
           {!isDisabled && (
             <Button className="modalButtons" type="submit">
