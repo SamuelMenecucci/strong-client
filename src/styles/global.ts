@@ -85,5 +85,18 @@ export const GlobalStyle = createGlobalStyle`
     position: relative ;
 
   }
+
+  .react-VacancyDetailsModal{
+    width: 100%;
+    max-width:  950px;
+    background-color: #fff;
+
+    padding:  30px 77px ;
+
+    border-radius:16px ;
+    border: 2px solid var(--purple-color);
+
+    position: relative ;
+  }
    
 `;

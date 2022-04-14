@@ -1,7 +1,7 @@
-import { Feedback } from "../components/Feedback";
-import { Footer } from "../components/Footer";
-import { Header } from "../components/Header";
-import { useRequests } from "../contexts/useRequests";
+import { Feedback } from "../../components/Feedback";
+import { Footer } from "../../components/Footer";
+import { Header } from "../../components/Header";
+import { useRequests } from "../../contexts/useRequests";
 import { Carousel } from "react-responsive-carousel";
 import styled from "styled-components";
 

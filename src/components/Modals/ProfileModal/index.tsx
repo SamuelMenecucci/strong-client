@@ -1,28 +1,29 @@
 import Modal from "react-modal";
-import closeImg from "../../assets/close.svg";
-import profileImg from "../../assets/profileInput.svg";
-import editImg from "../../assets/user-edit.svg";
+import closeImg from "../../../assets/close.svg";
+import profileImg from "../../../assets/profileInput.svg";
+import editImg from "../../../assets/user-edit.svg";
 import InputMask from "react-input-mask";
 
 import { Actions, Grid, MyVacancies, ProfileForm } from "./styles";
-import { Button } from "../Button";
-import { PhotosUpload } from "../../Helper";
-import { ModalProps } from "../../shared/models";
-import { useRequests } from "../../contexts/useRequests";
-import { useEffect, useState } from "react";
+import { Button } from "../../Button";
+import { PhotosUpload } from "../../../Helper";
+import { ModalProps } from "../../../shared/models";
+import { useRequests } from "../../../contexts/useRequests";
+import { useState } from "react";
+import { VacancyCard } from "../../Vacancy/VacancyCard";
 
 export function ProfileModal({ isOpen, onRequestClose }: ModalProps) {
   const { ong, setOng } = useRequests();
-  const [isDisabled, setIsDisabled] = useState(false);
-
-  console.log(ong);
+  const [isDisabled, setIsDisabled] = useState(true);
 
   function handleSetDisabled(e: any) {
     e.preventDefault();
 
-    isDisabled ? setIsDisabled(false) : setIsDisabled(true);
+    !isDisabled ? setIsDisabled(true) : setIsDisabled(false);
     console.log(isDisabled);
   }
+
+  function handleOpenDetails() {}
 
   return (
     <Modal
@@ -129,6 +130,7 @@ export function ProfileModal({ isOpen, onRequestClose }: ModalProps) {
 
       <MyVacancies>
         <h1>Suas Vagas</h1>
+        <VacancyCard onClick={handleOpenDetails} />
       </MyVacancies>
     </Modal>
   );

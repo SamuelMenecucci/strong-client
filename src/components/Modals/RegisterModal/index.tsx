@@ -1,11 +1,11 @@
 import Modal from "react-modal";
 import { Actions, Grid, RegisterForm } from "./styles";
-import closeImg from "../../assets/close.svg";
-import { Button } from "../Button";
+import closeImg from "../../../assets/close.svg";
+import { Button } from "../../Button";
 import InputMask from "react-input-mask";
 import { FormEvent, useState } from "react";
-import { ModalProps, OngType } from "../../shared/models";
-import { useRequests } from "../../contexts/useRequests";
+import { ModalProps, OngType } from "../../../shared/models";
+import { useRequests } from "../../../contexts/useRequests";
 
 export function RegisterModal({ isOpen, onRequestClose }: ModalProps) {
   const [registerOng, setRegisterOng] = useState<OngType>({} as OngType);
@@ -13,9 +13,7 @@ export function RegisterModal({ isOpen, onRequestClose }: ModalProps) {
   const { createOng } = useRequests();
 
   async function handleCreateOng(event: FormEvent) {
-    event.preventDefault();
-
-    await createOng(registerOng);
+    createOng(registerOng);
   }
 
   return (

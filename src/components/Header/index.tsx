@@ -3,7 +3,7 @@ import logoImg from "../../assets/logo.svg";
 import { Button } from "../Button";
 import profileImg from "../../assets/profile-circle.svg";
 import { useState } from "react";
-import { ProfileModal } from "../ProfileModal";
+import { ProfileModal } from "../Modals/ProfileModal";
 
 export function Header() {
   const currentPage = window.location.pathname;

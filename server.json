@@ -19,7 +19,7 @@
   "ongs": [
     {
       "id": 1,
-      "nomeOng": "Social Mídia",
+      "nome": "Social Mídia",
       "email": "socialmidi@gmail.com",
       "tel": "19996665588",
       "cnpj": "14522452154202",
@@ -43,6 +43,40 @@
       "senha": "12341",
       "description": "werqwerqwerqwerqewrewrqwerqwerqwer",
       "id": 3
+    },
+    {
+      "nomeOng": "Juliana Cristina De Oliveira Vicente",
+      "email": "samuelmenecucci@gmail.com",
+      "cnpj": "65.316.546./1313-21",
+      "tel": "(19) 65485-5452",
+      "senha": "8545105",
+      "description": "bla bls blsb lb adgkasdf",
+      "id": 4
+    },
+    {
+      "nomeOng": "Juliana Cristina De Oliveira Vicente",
+      "email": "samuelmenecucci@gmail.com",
+      "cnpj": "65.316.546./1313-21",
+      "tel": "(19) 65485-5452",
+      "senha": "8545105",
+      "description": "bla bls blsb lb adgkasdf",
+      "id": 5
+    },
+    {
+      "nomeOng": "SAMUEL MENECUCCI MOURA 555",
+      "tel": "(19) 99438-2900",
+      "email": "samuelmenecucci@gmail.com",
+      "cnpj": "53.254.321./3546-13",
+      "senha": "4524",
+      "description": "asdfalksdhfjasdnfçkjsdaf",
+      "id": 6
+    }
+  ],
+  "vagas": [
+    {
+      "description": "",
+      "tag": "",
+      "ongId": ""
     }
   ]
 }
