@@ -7,6 +7,10 @@ import { ModalProps, OngType } from "../../../shared/models";
 import { useRequests } from "../../../contexts/useRequests";
 import { TextareaInput } from "../../Inputs/Textarea/styles";
 import { CloseModalButton } from "../../Buttons/CloseModalButton";
+import { TelInput } from "../../Inputs/TelInput";
+import { CNPJInput } from "../../Inputs/CNPJInput";
+import { EmailInput } from "../../Inputs/EmailInput";
+import { SenhaInput } from "../../Inputs/SenhaInput";
 
 export function RegisterModal({ isOpen, onRequestClose }: ModalProps) {
   const [registerOng, setRegisterOng] = useState<OngType>({} as OngType);
@@ -39,34 +43,28 @@ export function RegisterModal({ isOpen, onRequestClose }: ModalProps) {
         />
 
         <Grid>
-          <InputMask
-            mask="99.999.999./9999-99"
-            type="text"
-            placeholder="CNPJ"
+          <CNPJInput
+            value={registerOng.cnpj}
             onChange={(e) =>
               setRegisterOng({ ...registerOng, cnpj: e.target.value })
             }
           />
 
-          <InputMask
-            mask="(99) 99999-9999"
-            type="tel"
-            placeholder="Seu telefone"
+          <TelInput
+            value={registerOng.tel}
             onChange={(e) =>
               setRegisterOng({ ...registerOng, tel: e.target.value })
             }
           />
-          <input
-            type="email"
-            placeholder="E-mail"
+          <EmailInput
+            value={registerOng.email}
             onChange={(e) =>
               setRegisterOng({ ...registerOng, email: e.target.value })
             }
           />
 
-          <input
-            type="password"
-            placeholder="Digite a sua senha"
+          <SenhaInput
+            value={registerOng.senha}
             onChange={(e) =>
               setRegisterOng({ ...registerOng, senha: e.target.value })
             }
