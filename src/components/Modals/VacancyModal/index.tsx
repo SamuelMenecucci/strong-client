@@ -1,12 +1,20 @@
 import Modal from "react-modal";
 import { ModalProps } from "../../../shared/models";
-import { Container } from "./styles";
-import closeImg from "../../../assets/close.svg";
+import { VacancyForm } from "./styles";
 import { TextareaInput } from "../../Inputs/Textarea/styles";
 import { CloseModalButton } from "../../Buttons/CloseModalButton";
-import { TelInput } from "../../Inputs/TelInput";
+import { useState } from "react";
+import editImg from "../../../assets/editarIcon.svg";
 
 export function VacancyDetailsModal({ isOpen, onRequestClose }: ModalProps) {
+  const [isDisabled, setIsDisabled] = useState(true);
+
+  function handleSetDisabled(e: any) {
+    e.preventDefault();
+
+    !isDisabled ? setIsDisabled(true) : setIsDisabled(false);
+    console.log(isDisabled);
+  }
   return (
     <Modal
       isOpen={isOpen}
@@ -14,13 +22,21 @@ export function VacancyDetailsModal({ isOpen, onRequestClose }: ModalProps) {
       className="react-VacancyDetailsModal"
       overlayClassName="react-modal-overlay"
     >
-      <Container>
+      <VacancyForm>
         <CloseModalButton onClick={onRequestClose} />
-        <h1>Titulo vaga</h1>
-        HTML - CSS - Javascript
-        <TelInput />
-        <TextareaInput placeholder="" value={text} />
-      </Container>
+
+        <span>
+          <h1> HTML - CSS - Javascript </h1>{" "}
+          <button
+            style={{ background: "transparent", border: "none" }}
+            onClick={handleSetDisabled}
+          >
+            <img src={editImg} alt="" />
+          </button>
+        </span>
+
+        <TextareaInput placeholder="" value={text} disabled />
+      </VacancyForm>
     </Modal>
   );
 }
