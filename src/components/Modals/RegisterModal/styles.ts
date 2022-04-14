@@ -3,14 +3,6 @@ import styled from "styled-components";
 export const RegisterForm = styled.form`
   text-align: center;
 
-  button.closeButton {
-    background: transparent;
-    border: none;
-    position: absolute;
-    right: 15px;
-    top: 15px;
-  }
-
   input {
     /* border-radius: 16px;
     border-width: 2px;
