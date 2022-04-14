@@ -130,7 +130,7 @@ export function ProfileModal({ isOpen, onRequestClose }: ModalProps) {
 
       <MyVacancies>
         <h1>Suas Vagas</h1>
-        <VacancyCard onClick={handleOpenDetails} />
+        <VacancyCard />
       </MyVacancies>
     </Modal>
   );
