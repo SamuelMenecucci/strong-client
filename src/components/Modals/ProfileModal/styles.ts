@@ -38,15 +38,6 @@ export const ProfileForm = styled.form`
     width: 350px;
   }
 
-  h1 {
-    font-size: 24px;
-    font-weight: 600;
-    background: -webkit-linear-gradient(var(--purple-color), var(--blue-color));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 17px;
-  }
-
   input {
     /* border-radius: 16px;
     border-width: 2px;

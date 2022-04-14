@@ -40,6 +40,15 @@ export const GlobalStyle = createGlobalStyle`
         
         }
 
+        h1 {
+            font-size: 24px;
+            font-weight: 600;
+            background: -webkit-linear-gradient(var(--purple-color), var(--blue-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 17px;
+        }
+
         button {
             cursor: pointer;
         }
