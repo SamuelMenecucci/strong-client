@@ -1,14 +1,6 @@
 import styled from "styled-components";
 
 export const ProfileForm = styled.form`
-  button.closeButton {
-    background: transparent;
-    border: none;
-    position: absolute;
-    right: 15px;
-    top: 15px;
-  }
-
   .name-picture {
     display: flex;
     align-items: center;

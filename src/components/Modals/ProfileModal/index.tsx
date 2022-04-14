@@ -12,6 +12,7 @@ import { useRequests } from "../../../contexts/useRequests";
 import { useState } from "react";
 import { VacancyCard } from "../../Vacancy/VacancyCard";
 import { TextareaInput } from "../../Inputs/Textarea/styles";
+import { CloseModalButton } from "../../Buttons/CloseModalButton";
 
 export function ProfileModal({ isOpen, onRequestClose }: ModalProps) {
   const { ong, setOng } = useRequests();
@@ -34,9 +35,7 @@ export function ProfileModal({ isOpen, onRequestClose }: ModalProps) {
       overlayClassName="react-modal-overlay"
     >
       <ProfileForm>
-        <button className="closeButton" onClick={onRequestClose}>
-          <img src={closeImg} alt="" />
-        </button>
+        <CloseModalButton onClick={onRequestClose} />
 
         <div className="name-picture">
           <span>
