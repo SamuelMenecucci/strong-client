@@ -6,7 +6,7 @@ import { CloseModalButton } from "../../Buttons/CloseModalButton";
 import { useState } from "react";
 import editImg from "../../../assets/editarIcon.svg";
 
-export function VacancyDetailsModal({ isOpen, onRequestClose }: ModalProps) {
+export function VacancyModal({ isOpen, onRequestClose }: ModalProps) {
   const [isDisabled, setIsDisabled] = useState(true);
 
   function handleSetDisabled(e: any) {
