@@ -13,6 +13,8 @@ export const TextareaInput = styled.textarea`
 
   padding: 13px 23px;
 
+  font-size: 22px;
+
   ::placeholder {
     color: rgba(0, 0, 0, 0.3);
     font-size: 18px;
