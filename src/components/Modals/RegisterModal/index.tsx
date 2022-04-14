@@ -6,6 +6,7 @@ import InputMask from "react-input-mask";
 import { FormEvent, useState } from "react";
 import { ModalProps, OngType } from "../../../shared/models";
 import { useRequests } from "../../../contexts/useRequests";
+import { TextareaInput } from "../../Inputs/Textarea/styles";
 
 export function RegisterModal({ isOpen, onRequestClose }: ModalProps) {
   const [registerOng, setRegisterOng] = useState<OngType>({} as OngType);
@@ -74,7 +75,7 @@ export function RegisterModal({ isOpen, onRequestClose }: ModalProps) {
           />
         </Grid>
 
-        <textarea
+        <TextareaInput
           name=""
           id=""
           placeholder="Conte mais sobre a sua instituição"
@@ -82,7 +83,7 @@ export function RegisterModal({ isOpen, onRequestClose }: ModalProps) {
             setRegisterOng({ ...registerOng, description: e.target.value })
           }
           maxLength={300}
-        ></textarea>
+        />
         <Actions>
           <Button className="modalButtons" type="submit">
             Salvar e criar vaga
