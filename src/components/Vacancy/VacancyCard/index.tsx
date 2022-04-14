@@ -1,20 +1,36 @@
+import { useState } from "react";
+import { VacancyDetailsModal } from "../../Modals/VacancyDetailsModal";
 import { Content } from "./styles";
 
-interface VacancyProps {
-  onClick: () => void;
-}
+export function VacancyCard() {
+  const [isVacancyDetailsModalOpen, setIsVacancyDetailsModalOpen] =
+    useState(false);
 
-export function VacancyCard({ onClick }: VacancyProps) {
+  function handleOpenVacancyDetailsModal() {
+    setIsVacancyDetailsModalOpen(true);
+  }
+
+  function handleCloseVacancyDetailsModal() {
+    setIsVacancyDetailsModalOpen(false);
+  }
+
   return (
-    <Content>
-      <span>
-        <img src={require("../../../assets/user.png")} alt="" />
-      </span>
+    <>
+      <Content onClick={handleOpenVacancyDetailsModal}>
+        <span>
+          <img src={require("../../../assets/user.png")} alt="" />
+        </span>
 
-      <div className="info">
-        <h1>Social Mídia</h1>
-        <p>Nível Fácil - Social - Designe</p>
-      </div>
-    </Content>
+        <div className="info">
+          <h1>Social Mídia</h1>
+          <p>Nível Fácil - Social - Designe</p>
+        </div>
+      </Content>
+
+      <VacancyDetailsModal
+        isOpen={isVacancyDetailsModalOpen}
+        onRequestClose={handleCloseVacancyDetailsModal}
+      />
+    </>
   );
 }
