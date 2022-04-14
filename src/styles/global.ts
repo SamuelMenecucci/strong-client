@@ -34,6 +34,25 @@ export const GlobalStyle = createGlobalStyle`
             font-weight: 400 ;
         }
 
+        input {
+            border: 2px solid var(--purple-color);
+            border-radius: 16px;
+
+            padding: 10px 10px;
+
+            width: 100%;
+
+            margin-bottom: 33px;
+
+            font-size: 22px;
+
+
+    ::placeholder {
+      color: rgba(0, 0, 0, 0.3);
+      font-size: 18px;
+    }
+        }
+
         h1, h2, h3, h4, h5, h6, strong {
             font-family: 'Poppins', sans-serif ;
             font-weight:600;
