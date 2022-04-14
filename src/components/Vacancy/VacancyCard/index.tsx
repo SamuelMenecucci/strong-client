@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { VacancyDetailsModal } from "../../Modals/VacancyDetailsModal";
+import { VacancyModal } from "../../Modals/VacancyModal";
 import { Content } from "./styles";
 
 export function VacancyCard() {
@@ -27,7 +27,7 @@ export function VacancyCard() {
         </div>
       </Content>
 
-      <VacancyDetailsModal
+      <VacancyModal
         isOpen={isVacancyDetailsModalOpen}
         onRequestClose={handleCloseVacancyDetailsModal}
       />

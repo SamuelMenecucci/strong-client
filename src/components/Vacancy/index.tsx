@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { VacancyDetailsModal } from "../Modals/VacancyDetailsModal";
+import { VacancyModal } from "../Modals/VacancyModal";
 import { Search } from "./Search";
 import { Container, Content } from "./styles";
 import { VacancyCard } from "./VacancyCard";
