@@ -29,29 +29,6 @@ export const ProfileForm = styled.form`
   input[name="nomeOng"] {
     width: 350px;
   }
-
-  input {
-    /* border-radius: 16px;
-    border-width: 2px;
-    border-style: solid;
-    border-image: linear-gradient(to right, #b224ef, #7579ff) 1;
-    padding: 10px 10px; */
-
-    border: 2px solid var(--purple-color);
-    border-radius: 16px;
-
-    padding: 10px 10px;
-
-    width: 100%;
-
-    margin-bottom: 20px;
-    font-size: 22px;
-
-    ::placeholder {
-      color: rgba(0, 0, 0, 0.3);
-      font-size: 18px;
-    }
-  }
 `;
 
 export const Grid = styled.div`
