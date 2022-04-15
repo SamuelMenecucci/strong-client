@@ -1,5 +1,5 @@
 import Modal from "react-modal";
-import closeImg from "../../../assets/close.svg";
+import addImg from "../../../assets/add.svg";
 import profileImg from "../../../assets/profileInput.svg";
 import editImg from "../../../assets/user-edit.svg";
 import InputMask from "react-input-mask";
@@ -129,7 +129,13 @@ export function ProfileModal({ isOpen, onRequestClose }: ModalProps) {
       </ProfileForm>
 
       <MyVacancies>
-        <h1>Suas Vagas</h1>
+        <span>
+          <h1>Suas Vagas</h1>
+
+          <button>
+            <img src={addImg} alt="" />{" "}
+          </button>
+        </span>
 
         {vagas.map((element: any) => {
           return <VacancyCard vagas={element} />;

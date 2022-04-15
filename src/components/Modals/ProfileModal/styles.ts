@@ -49,12 +49,13 @@ export const Actions = styled.div`
 `;
 
 export const MyVacancies = styled.div`
-  h1 {
-    font-size: 24px;
-    font-weight: 600;
-    background: -webkit-linear-gradient(var(--purple-color), var(--blue-color));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 17px;
+  span {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    h1 {
+      margin-bottom: initial;
+    }
   }
 `;
