@@ -14,6 +14,7 @@ export function RequestsProvider({ children }: any) {
   const [feedbacks, setFeedbacks] = useState<any>([]);
 
   const [ong, setOng] = useState({});
+  const [vagas, setVagas] = useState([]);
 
   useEffect(() => {
     api.get("feedbacks").then((res) => setFeedbacks(res.data));
@@ -26,12 +27,19 @@ export function RequestsProvider({ children }: any) {
     });
   }, []);
 
+  useEffect(() => {
+    api.get("/vagas").then((res) => setVagas(res.data));
+  }, []);
+
   async function createOng(data: OngType) {
-    api.post("ongs", { ...data });
+    console.log(data);
+    api.post("createOng", { ...data });
   }
 
   return (
-    <RequestsContext.Provider value={{ feedbacks, createOng, ong, setOng }}>
+    <RequestsContext.Provider
+      value={{ feedbacks, createOng, ong, setOng, vagas }}
+    >
       {children}
     </RequestsContext.Provider>
   );
