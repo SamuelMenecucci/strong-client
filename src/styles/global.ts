@@ -70,6 +70,8 @@ export const GlobalStyle = createGlobalStyle`
 
         button {
             cursor: pointer;
+            background:transparent ;
+            border: none ;
         }
 
     }
