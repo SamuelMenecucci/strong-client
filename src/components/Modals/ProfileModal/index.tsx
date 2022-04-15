@@ -15,7 +15,7 @@ import { TextareaInput } from "../../Inputs/Textarea/styles";
 import { CloseModalButton } from "../../Buttons/CloseModalButton";
 
 export function ProfileModal({ isOpen, onRequestClose }: ModalProps) {
-  const { ong, setOng } = useRequests();
+  const { ong, setOng, vagas, loggedOng } = useRequests();
   const [isDisabled, setIsDisabled] = useState(true);
 
   function handleSetDisabled(e: any) {
@@ -55,13 +55,13 @@ export function ProfileModal({ isOpen, onRequestClose }: ModalProps) {
               accept="image/*"
             />
             {isDisabled ? (
-              <h1>{ong.nomeOng}</h1>
+              <h1>{loggedOng.nome}</h1>
             ) : (
               <input
                 type="text"
                 name="nomeOng"
                 placeholder="Nome da ONG"
-                value={ong.nomeOng}
+                value={loggedOng.nome}
                 onChange={(e) => setOng({ ...ong, nomeOng: e.target.value })}
               />
             )}
@@ -81,7 +81,7 @@ export function ProfileModal({ isOpen, onRequestClose }: ModalProps) {
             type="text"
             placeholder="CNPJ"
             disabled={isDisabled}
-            value={ong.cnpj}
+            value={loggedOng.cnpj}
             onChange={(e) => setOng({ ...ong, cnpj: e.target.value })}
           />
 
@@ -89,7 +89,7 @@ export function ProfileModal({ isOpen, onRequestClose }: ModalProps) {
             mask="(99) 99999-9999"
             type="tel"
             disabled={isDisabled}
-            value={ong.tel}
+            value={loggedOng.tel}
             onChange={(e) => setOng({ ...ong, tel: e.target.value })}
             placeholder="Seu telefone"
           />
@@ -97,7 +97,7 @@ export function ProfileModal({ isOpen, onRequestClose }: ModalProps) {
             type="email"
             placeholder="E-mail"
             disabled={isDisabled}
-            value={ong.email}
+            value={loggedOng.email}
             onChange={(e) => setOng({ ...ong, email: e.target.value })}
           />
 
@@ -105,7 +105,7 @@ export function ProfileModal({ isOpen, onRequestClose }: ModalProps) {
             type="password"
             placeholder="Digite a sua senha"
             disabled={isDisabled}
-            value={ong.senha}
+            value={loggedOng.senha}
             onChange={(e) => setOng({ ...ong, senha: e.target.value })}
           />
         </Grid>
@@ -115,7 +115,7 @@ export function ProfileModal({ isOpen, onRequestClose }: ModalProps) {
           id=""
           placeholder="Conte mais sobre a sua instituição"
           disabled={isDisabled}
-          value={ong.description}
+          value={loggedOng.descricao}
           onChange={(e) => setOng({ ...ong, description: e.target.value })}
           maxLength={300}
         />
@@ -130,7 +130,10 @@ export function ProfileModal({ isOpen, onRequestClose }: ModalProps) {
 
       <MyVacancies>
         <h1>Suas Vagas</h1>
-        <VacancyCard />
+
+        {vagas.map((element: any) => {
+          return <VacancyCard vagas={element} />;
+        })}
       </MyVacancies>
     </Modal>
   );
