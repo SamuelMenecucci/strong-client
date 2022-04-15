@@ -4,9 +4,14 @@ import buttonImg from "../../assets/arrow-circle-right.svg";
 import { useState } from "react";
 import { RegisterModal } from "../Modals/RegisterModal";
 import { Button } from ".././Buttons/Button";
+import { useRequests } from "../../contexts/useRequests";
 
 export function Presentation() {
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
+
+  const { loggedOng } = useRequests();
+
+  console.log(loggedOng);
 
   function handleOpenRegisterModal() {
     setIsRegisterModalOpen(true);
