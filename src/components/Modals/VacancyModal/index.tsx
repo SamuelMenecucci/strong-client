@@ -6,7 +6,7 @@ import { CloseModalButton } from "../../Buttons/CloseModalButton";
 import { useState } from "react";
 import editImg from "../../../assets/editarIcon.svg";
 
-export function VacancyModal({ isOpen, onRequestClose }: ModalProps) {
+export function VacancyModal({ isOpen, onRequestClose, vaga }: any) {
   const [isDisabled, setIsDisabled] = useState(true);
 
   function handleSetDisabled(e: any) {
@@ -26,7 +26,7 @@ export function VacancyModal({ isOpen, onRequestClose }: ModalProps) {
         <CloseModalButton onClick={onRequestClose} />
 
         <span>
-          <h1> HTML - CSS - Javascript </h1>{" "}
+          <h1> {vaga.tag} </h1>{" "}
           <button
             style={{ background: "transparent", border: "none" }}
             onClick={handleSetDisabled}
@@ -35,7 +35,7 @@ export function VacancyModal({ isOpen, onRequestClose }: ModalProps) {
           </button>
         </span>
 
-        <TextareaInput placeholder="" value={text} disabled />
+        <TextareaInput placeholder="" value={vaga.description} disabled />
       </VacancyForm>
     </Modal>
   );

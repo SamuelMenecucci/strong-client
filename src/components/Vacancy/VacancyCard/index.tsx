@@ -2,7 +2,7 @@ import { useState } from "react";
 import { VacancyModal } from "../../Modals/VacancyModal";
 import { Content } from "./styles";
 
-export function VacancyCard() {
+export function VacancyCard({ vaga }: any) {
   const [isVacancyDetailsModalOpen, setIsVacancyDetailsModalOpen] =
     useState(false);
 
@@ -22,14 +22,15 @@ export function VacancyCard() {
         </span>
 
         <div className="info">
-          <h1>Social Mídia</h1>
-          <p>Nível Fácil - Social - Designe</p>
+          <h1>{vaga.nomeOng}</h1>
+          <p>{vaga.tag}</p>
         </div>
       </Content>
 
       <VacancyModal
         isOpen={isVacancyDetailsModalOpen}
         onRequestClose={handleCloseVacancyDetailsModal}
+        vaga={vaga}
       />
     </>
   );
