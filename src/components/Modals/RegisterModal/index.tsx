@@ -1,7 +1,6 @@
 import Modal from "react-modal";
 import { Actions, Grid, RegisterForm } from "./styles";
 import { Button } from "../../Buttons/Button";
-import InputMask from "react-input-mask";
 import { FormEvent, useState } from "react";
 import { ModalProps, OngType } from "../../../shared/models";
 import { useRequests } from "../../../contexts/useRequests";
