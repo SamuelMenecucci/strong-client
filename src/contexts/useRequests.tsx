@@ -22,13 +22,13 @@ export function RequestsProvider({ children }: any) {
   const [ong, setOng] = useState({});
   const [vagas, setVagas] = useState([]);
 
-  useEffect(() => {
-    api.get("feedbacks").then((res) => setFeedbacks(res.data));
-  }, []);
+  // useEffect(() => {
+  //   api.get("feedbacks").then((res) => setFeedbacks(res.data));
+  // }, []);
 
-  useEffect(() => {
-    api.get("/vagas").then((res) => setVagas(res.data));
-  }, []);
+  // useEffect(() => {
+  //   api.get("/vagas").then((res) => setVagas(res.data));
+  // }, []);
 
   async function createOng(data: OngType) {
     api.post("createOng", { ...data }).then((res) => {
