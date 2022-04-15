@@ -11,8 +11,6 @@ export function Presentation() {
 
   const { loggedOng } = useRequests();
 
-  console.log(loggedOng);
-
   function handleOpenRegisterModal() {
     setIsRegisterModalOpen(true);
   }
@@ -32,10 +30,11 @@ export function Presentation() {
           precisam de um empurrãozinho, e a força está atrelada aos
           (Voluntários) que solucionam os respectivos problemas das ONGs.
         </p>
-
-        <Button id="register" onClick={handleOpenRegisterModal}>
-          Cadastre-se <img src={buttonImg} alt="" />
-        </Button>
+        {!loggedOng && (
+          <Button id="register" onClick={handleOpenRegisterModal}>
+            Cadastre-se <img src={buttonImg} alt="" />
+          </Button>
+        )}
       </div>
 
       <div className="home-img">
