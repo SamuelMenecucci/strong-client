@@ -13,6 +13,12 @@ const RequestsContext = createContext<any>({});
 export function RequestsProvider({ children }: any) {
   const [feedbacks, setFeedbacks] = useState<any>([]);
 
+  const [loggedOng, setLoggedOng] = useState(
+    JSON.parse(sessionStorage.getItem("ong") || "")
+  );
+
+  console.log(loggedOng);
+
   const [ong, setOng] = useState({});
   const [vagas, setVagas] = useState([]);
 
@@ -21,24 +27,20 @@ export function RequestsProvider({ children }: any) {
   }, []);
 
   useEffect(() => {
-    api.get("ongs").then((res) => {
-      setOng(res.data[2]);
-      localStorage.setItem("ong", JSON.stringify(res.data[2]));
-    });
-  }, []);
-
-  useEffect(() => {
     api.get("/vagas").then((res) => setVagas(res.data));
   }, []);
 
   async function createOng(data: OngType) {
-    console.log(data);
-    api.post("createOng", { ...data });
+    api.post("createOng", { ...data }).then((res) => {
+      sessionStorage.setItem("ong", JSON.stringify(res.data));
+
+      console.log(res.data);
+    });
   }
 
   return (
     <RequestsContext.Provider
-      value={{ feedbacks, createOng, ong, setOng, vagas }}
+      value={{ feedbacks, createOng, ong, setOng, vagas, loggedOng }}
     >
       {children}
     </RequestsContext.Provider>
