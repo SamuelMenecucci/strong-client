@@ -70,13 +70,29 @@
       "senha": "4524",
       "description": "asdfalksdhfjasdnfçkjsdaf",
       "id": 6
+    },
+    {
+      "tel": "(41) 15210-12__",
+      "email": "samuelmenecucci@gmail.com",
+      "nomeOng": "Juliana Cristina De Oliveira Vicente",
+      "description": "asdfasdfasdfdsfasdff",
+      "id": 7
     }
   ],
   "vagas": [
     {
-      "description": "",
-      "tag": "",
-      "ongIg": ""
+      "description": "Lorem Ipsun is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500's, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the",
+      "tag": "HTML - CSS - JAVASCRIPT",
+      "nomeOng": "Nome da ONG",
+      "email": "emailong@ong.com.br",
+      "tel": "(19) 65485-5452"
+    },
+    {
+      "description": " 2Lorem Ipsun is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500's, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the",
+      "tag": "HTML - CSS - JAVASCRIPT 2",
+      "nomeOng": "Nome da ONG",
+      "email": "emailong@ong.com.br",
+      "tel": "(19) 65485-5452"
     }
   ]
 }
