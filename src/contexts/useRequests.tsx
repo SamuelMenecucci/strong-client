@@ -1,46 +1,36 @@
-import {
-  createContext,
-  useContext,
-  useDebugValue,
-  useEffect,
-  useState,
-} from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { api } from "../services/api";
 import { OngType } from "../shared/models";
 
 const RequestsContext = createContext<any>({});
 
 export function RequestsProvider({ children }: any) {
+  const [loggedOng, setLoggedOng] = useState(() => {
+    const isLogged = sessionStorage.getItem("ong");
+
+    if (isLogged) {
+      return JSON.parse(isLogged);
+    }
+
+    return "";
+  });
+
   const [feedbacks, setFeedbacks] = useState<any>([]);
 
-  const [loggedOng, setLoggedOng] = useState(
-    JSON.parse(sessionStorage.getItem("ong") || "")
-  );
-
-  console.log(loggedOng);
-
-  const [ong, setOng] = useState({});
   const [vagas, setVagas] = useState([]);
 
-  // useEffect(() => {
-  //   api.get("feedbacks").then((res) => setFeedbacks(res.data));
-  // }, []);
-
-  // useEffect(() => {
-  //   api.get("/vagas").then((res) => setVagas(res.data));
-  // }, []);
-
   async function createOng(data: OngType) {
-    api.post("createOng", { ...data }).then((res) => {
-      sessionStorage.setItem("ong", JSON.stringify(res.data));
-
-      console.log(res.data);
-    });
+    api
+      .post("createOng", { ...data })
+      .then((res) => {
+        sessionStorage.setItem("ong", JSON.stringify(res.data));
+      })
+      .catch((err) => err);
   }
 
   return (
     <RequestsContext.Provider
-      value={{ feedbacks, createOng, ong, setOng, vagas, loggedOng }}
+      value={{ feedbacks, createOng, vagas, loggedOng }}
     >
       {children}
     </RequestsContext.Provider>
