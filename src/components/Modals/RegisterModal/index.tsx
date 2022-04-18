@@ -19,9 +19,9 @@ export function RegisterModal({ isOpen, onRequestClose }: ModalProps) {
   async function handleCreateOng(event: FormEvent) {
     event.preventDefault();
 
-    window.location.href = "/";
+    await createOng(registerOng);
 
-    createOng(registerOng);
+    window.location.href = "/";
   }
 
   return (
