@@ -73,12 +73,21 @@ export function ProfileModal({ isOpen, onRequestClose }: ModalProps) {
         <div className="name-picture">
           <span>
             <label htmlFor="profileInputImg">
-              <img
-                style={{ cursor: "pointer" }}
-                src={loggedOng.imagem}
-                alt=""
-                id="profileTag"
-              />
+              {loggedOng.imagem ? (
+                <img
+                  style={{ cursor: "pointer" }}
+                  src={loggedOng.imagem}
+                  alt=""
+                  id="profileTag"
+                />
+              ) : (
+                <img
+                  style={{ cursor: "pointer" }}
+                  src={profileImg}
+                  alt=""
+                  id="profileTag"
+                />
+              )}
             </label>
             <input
               type="file"
@@ -89,6 +98,7 @@ export function ProfileModal({ isOpen, onRequestClose }: ModalProps) {
                 PhotosUpload.handleProfilePicture(e);
               }}
               accept="image/*"
+              disabled={isDisabled}
             />
             {isDisabled ? (
               <h1>{loggedOng.nome}</h1>
@@ -99,6 +109,7 @@ export function ProfileModal({ isOpen, onRequestClose }: ModalProps) {
                 name="nomeOng"
                 placeholder="Nome da ONG"
                 defaultValue={loggedOng.nome}
+                disabled={isDisabled}
               />
             )}
           </span>
