@@ -34,9 +34,12 @@ export function RequestsProvider({ children }: any) {
   }
 
   async function editOng(data: any) {
-    const result = await api.put("editOng", { ...data });
-
     console.log(data);
+    const result = await api.put("editOng", data, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
 
     sessionStorage.setItem("ong", JSON.stringify(result.data));
   }
