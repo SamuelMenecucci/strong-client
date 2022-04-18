@@ -2,7 +2,6 @@ import Modal from "react-modal";
 import addImg from "../../../assets/add.svg";
 import profileImg from "../../../assets/profileInput.svg";
 import editImg from "../../../assets/user-edit.svg";
-import InputMask from "react-input-mask";
 
 import { Actions, Grid, MyVacancies, ProfileForm } from "./styles";
 import { Button } from "../../Buttons/Button";
@@ -11,7 +10,7 @@ import { ModalProps } from "../../../shared/models";
 import { useRequests } from "../../../contexts/useRequests";
 import { FormEvent, useState } from "react";
 import { VacancyCard } from "../../Vacancy/VacancyCard";
-import { TextareaInput } from "../../Inputs/Textarea/styles";
+import { Textarea } from "../../Inputs/Textarea";
 import { CloseModalButton } from "../../Buttons/CloseModalButton";
 import { TelInput } from "../../Inputs/TelInput";
 import { CNPJInput } from "../../Inputs/CNPJInput";
@@ -32,7 +31,10 @@ export function ProfileModal({ isOpen, onRequestClose }: ModalProps) {
   function handleEditOng(event: any) {
     event.preventDefault();
 
-    const { nome, cnpj }: any = document.forms["profile"];
+    const { nome, cnpj, tel, email, senha, descricao }: any =
+      document.forms["profile"];
+
+    console.log(nome, cnpj, tel, email, senha, descricao.value);
   }
 
   return (
@@ -92,7 +94,7 @@ export function ProfileModal({ isOpen, onRequestClose }: ModalProps) {
           <SenhaInput disabled={isDisabled} defaultValue={loggedOng.senha} />
         </Grid>
 
-        <TextareaInput disabled={isDisabled} value={loggedOng.descricao} />
+        <Textarea disabled={isDisabled} defaultValue={loggedOng.descricao} />
         <Actions>
           {!isDisabled && (
             <Button className="modalButtons" type="submit">
