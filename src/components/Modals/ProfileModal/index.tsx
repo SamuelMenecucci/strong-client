@@ -25,6 +25,14 @@ export function ProfileModal({ isOpen, onRequestClose }: ModalProps) {
     console.log(isDisabled);
   }
 
+  function handleEditOng(event: any) {
+    event.preventDefault();
+
+    const { nome }: any = document.forms["profile"];
+
+    console.log(nome);
+  }
+
   return (
     <Modal
       isOpen={isOpen}
@@ -32,7 +40,7 @@ export function ProfileModal({ isOpen, onRequestClose }: ModalProps) {
       className="react-profileModal-content"
       overlayClassName="react-modal-overlay"
     >
-      <ProfileForm>
+      <ProfileForm onSubmit={handleEditOng} id="profile">
         <CloseModalButton onClick={onRequestClose} />
 
         <div className="name-picture">
@@ -56,9 +64,9 @@ export function ProfileModal({ isOpen, onRequestClose }: ModalProps) {
               <h1>{loggedOng.nome}</h1>
             ) : (
               <input
+                id="nome"
                 type="text"
                 name="nomeOng"
-                id="nome"
                 placeholder="Nome da ONG"
                 defaultValue={loggedOng.nome}
               />
