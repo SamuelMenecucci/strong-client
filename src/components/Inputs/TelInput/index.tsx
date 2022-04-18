@@ -4,6 +4,7 @@ import InputMask from "react-input-mask";
 export function TelInput({ ...props }: InputHTMLAttributes<HTMLInputElement>) {
   return (
     <InputMask
+      id="tel"
       mask="(99) 99999-9999"
       type="tel"
       placeholder="Seu telefone"

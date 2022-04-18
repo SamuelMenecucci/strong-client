@@ -3,5 +3,12 @@ import { InputHTMLAttributes } from "react";
 export function SenhaInput({
   ...props
 }: InputHTMLAttributes<HTMLInputElement>) {
-  return <input type="password" placeholder="Digite a sua senha" {...props} />;
+  return (
+    <input
+      id="senha"
+      type="password"
+      placeholder="Digite a sua senha"
+      {...props}
+    />
+  );
 }

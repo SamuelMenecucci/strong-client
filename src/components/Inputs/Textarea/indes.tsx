@@ -4,5 +4,5 @@ import { TextareaInput } from "./styles";
 export function Textarea({
   ...props
 }: TextareaHTMLAttributes<HTMLTextAreaElement>) {
-  return <TextareaInput {...props} />;
+  return <TextareaInput id="descricao" {...props} />;
 }
