@@ -15,8 +15,6 @@ export function RequestsProvider({ children }: any) {
     return "";
   });
 
-  console.log(loggedOng);
-
   const [feedbacks, setFeedbacks] = useState<any>([]);
 
   const [vagas, setVagas] = useState([]);
@@ -35,13 +33,17 @@ export function RequestsProvider({ children }: any) {
     sessionStorage.setItem("ong", JSON.stringify(result.data));
   }
 
-  function editOng(data: any) {
-    api.put("editOng", { ...data });
+  async function editOng(data: any) {
+    const result = await api.put("editOng", { ...data });
+
+    console.log(data);
+
+    sessionStorage.setItem("ong", JSON.stringify(result.data));
   }
 
   return (
     <RequestsContext.Provider
-      value={{ feedbacks, createOng, vagas, loggedOng, setLoggedOng }}
+      value={{ feedbacks, createOng, vagas, loggedOng, setLoggedOng, editOng }}
     >
       {children}
     </RequestsContext.Provider>
