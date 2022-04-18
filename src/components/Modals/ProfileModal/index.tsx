@@ -9,13 +9,13 @@ import { Button } from "../../Buttons/Button";
 import { PhotosUpload } from "../../../Helper";
 import { ModalProps } from "../../../shared/models";
 import { useRequests } from "../../../contexts/useRequests";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { VacancyCard } from "../../Vacancy/VacancyCard";
 import { TextareaInput } from "../../Inputs/Textarea/styles";
 import { CloseModalButton } from "../../Buttons/CloseModalButton";
 
 export function ProfileModal({ isOpen, onRequestClose }: ModalProps) {
-  const { ong, setOng, vagas, loggedOng } = useRequests();
+  const { ong, setOng, vagas, loggedOng, setLoggedOng } = useRequests();
   const [isDisabled, setIsDisabled] = useState(true);
 
   function handleSetDisabled(e: any) {
@@ -24,8 +24,6 @@ export function ProfileModal({ isOpen, onRequestClose }: ModalProps) {
     !isDisabled ? setIsDisabled(true) : setIsDisabled(false);
     console.log(isDisabled);
   }
-
-  function handleOpenDetails() {}
 
   return (
     <Modal
@@ -60,9 +58,9 @@ export function ProfileModal({ isOpen, onRequestClose }: ModalProps) {
               <input
                 type="text"
                 name="nomeOng"
+                id="nome"
                 placeholder="Nome da ONG"
-                value={loggedOng.nome}
-                onChange={(e) => setOng({ ...ong, nomeOng: e.target.value })}
+                defaultValue={loggedOng.nome}
               />
             )}
           </span>
@@ -78,11 +76,14 @@ export function ProfileModal({ isOpen, onRequestClose }: ModalProps) {
         <Grid>
           <InputMask
             mask="99.999.999./9999-99"
+            id="cnpj"
             type="text"
             placeholder="CNPJ"
             disabled={isDisabled}
             value={loggedOng.cnpj}
-            onChange={(e) => setOng({ ...ong, cnpj: e.target.value })}
+            onChange={(e) =>
+              setLoggedOng({ ...loggedOng, cnpj: e.target.value })
+            }
           />
 
           <InputMask
@@ -90,7 +91,9 @@ export function ProfileModal({ isOpen, onRequestClose }: ModalProps) {
             type="tel"
             disabled={isDisabled}
             value={loggedOng.tel}
-            onChange={(e) => setOng({ ...ong, tel: e.target.value })}
+            onChange={(e) =>
+              setLoggedOng({ ...loggedOng, tel: e.target.value })
+            }
             placeholder="Seu telefone"
           />
           <input
@@ -98,7 +101,9 @@ export function ProfileModal({ isOpen, onRequestClose }: ModalProps) {
             placeholder="E-mail"
             disabled={isDisabled}
             value={loggedOng.email}
-            onChange={(e) => setOng({ ...ong, email: e.target.value })}
+            onChange={(e) =>
+              setLoggedOng({ ...loggedOng, email: e.target.value })
+            }
           />
 
           <input
@@ -106,7 +111,9 @@ export function ProfileModal({ isOpen, onRequestClose }: ModalProps) {
             placeholder="Digite a sua senha"
             disabled={isDisabled}
             value={loggedOng.senha}
-            onChange={(e) => setOng({ ...ong, senha: e.target.value })}
+            onChange={(e) =>
+              setLoggedOng({ ...loggedOng, senha: e.target.value })
+            }
           />
         </Grid>
 
@@ -116,7 +123,9 @@ export function ProfileModal({ isOpen, onRequestClose }: ModalProps) {
           placeholder="Conte mais sobre a sua instituição"
           disabled={isDisabled}
           value={loggedOng.descricao}
-          onChange={(e) => setOng({ ...ong, description: e.target.value })}
+          onChange={(e) =>
+            setLoggedOng({ ...loggedOng, descricao: e.target.value })
+          }
           maxLength={300}
         />
         <Actions>
