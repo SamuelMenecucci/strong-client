@@ -21,6 +21,7 @@ import { api } from "../../../services/api";
 export function ProfileModal({ isOpen, onRequestClose }: ModalProps) {
   const { vagas, loggedOng, editOng } = useRequests();
   const [isDisabled, setIsDisabled] = useState(true);
+  const [photo, setPhoto] = useState<any>({});
 
   function handleSetDisabled(e: any) {
     e.preventDefault();
@@ -45,7 +46,12 @@ export function ProfileModal({ isOpen, onRequestClose }: ModalProps) {
       descricao: descricao.value,
     };
 
-    await editOng(data);
+    let formData = new FormData();
+
+    formData.append("file", photo[0]);
+    formData.append("ong", JSON.stringify(data));
+
+    await editOng(formData);
 
     window.location.reload();
   }
@@ -57,7 +63,11 @@ export function ProfileModal({ isOpen, onRequestClose }: ModalProps) {
       className="react-profileModal-content"
       overlayClassName="react-modal-overlay"
     >
-      <ProfileForm onSubmit={handleEditOng} id="profile">
+      <ProfileForm
+        id="profile"
+        onSubmit={handleEditOng}
+        encType="multipart/form-data"
+      >
         <CloseModalButton onClick={onRequestClose} />
 
         <div className="name-picture">
@@ -65,7 +75,7 @@ export function ProfileModal({ isOpen, onRequestClose }: ModalProps) {
             <label htmlFor="profileInputImg">
               <img
                 style={{ cursor: "pointer" }}
-                src={profileImg}
+                src={loggedOng.imagem}
                 alt=""
                 id="profileTag"
               />
@@ -74,7 +84,10 @@ export function ProfileModal({ isOpen, onRequestClose }: ModalProps) {
               type="file"
               id="profileInputImg"
               name="profilePicture"
-              onChange={(e) => PhotosUpload.handleProfilePicture(e)}
+              onChange={(e) => {
+                setPhoto(e.target.files);
+                PhotosUpload.handleProfilePicture(e);
+              }}
               accept="image/*"
             />
             {isDisabled ? (
