@@ -13,6 +13,10 @@ import { FormEvent, useState } from "react";
 import { VacancyCard } from "../../Vacancy/VacancyCard";
 import { TextareaInput } from "../../Inputs/Textarea/styles";
 import { CloseModalButton } from "../../Buttons/CloseModalButton";
+import { TelInput } from "../../Inputs/TelInput";
+import { CNPJInput } from "../../Inputs/CNPJInput";
+import { EmailInput } from "../../Inputs/EmailInput";
+import { SenhaInput } from "../../Inputs/SenhaInput";
 
 export function ProfileModal({ isOpen, onRequestClose }: ModalProps) {
   const { ong, setOng, vagas, loggedOng, setLoggedOng } = useRequests();
@@ -28,9 +32,7 @@ export function ProfileModal({ isOpen, onRequestClose }: ModalProps) {
   function handleEditOng(event: any) {
     event.preventDefault();
 
-    const { nome }: any = document.forms["profile"];
-
-    console.log(nome);
+    const { nome, cnpj }: any = document.forms["profile"];
   }
 
   return (
@@ -82,60 +84,15 @@ export function ProfileModal({ isOpen, onRequestClose }: ModalProps) {
         </div>
 
         <Grid>
-          <InputMask
-            mask="99.999.999./9999-99"
-            id="cnpj"
-            type="text"
-            placeholder="CNPJ"
-            disabled={isDisabled}
-            value={loggedOng.cnpj}
-            onChange={(e) =>
-              setLoggedOng({ ...loggedOng, cnpj: e.target.value })
-            }
-          />
+          <CNPJInput disabled={isDisabled} defaultValue={loggedOng.cnpj} />
 
-          <InputMask
-            mask="(99) 99999-9999"
-            type="tel"
-            disabled={isDisabled}
-            value={loggedOng.tel}
-            onChange={(e) =>
-              setLoggedOng({ ...loggedOng, tel: e.target.value })
-            }
-            placeholder="Seu telefone"
-          />
-          <input
-            type="email"
-            placeholder="E-mail"
-            disabled={isDisabled}
-            value={loggedOng.email}
-            onChange={(e) =>
-              setLoggedOng({ ...loggedOng, email: e.target.value })
-            }
-          />
+          <TelInput disabled={isDisabled} defaultValue={loggedOng.tel} />
+          <EmailInput disabled={isDisabled} defaultValue={loggedOng.email} />
 
-          <input
-            type="password"
-            placeholder="Digite a sua senha"
-            disabled={isDisabled}
-            value={loggedOng.senha}
-            onChange={(e) =>
-              setLoggedOng({ ...loggedOng, senha: e.target.value })
-            }
-          />
+          <SenhaInput disabled={isDisabled} defaultValue={loggedOng.senha} />
         </Grid>
 
-        <TextareaInput
-          name=""
-          id=""
-          placeholder="Conte mais sobre a sua instituição"
-          disabled={isDisabled}
-          value={loggedOng.descricao}
-          onChange={(e) =>
-            setLoggedOng({ ...loggedOng, descricao: e.target.value })
-          }
-          maxLength={300}
-        />
+        <TextareaInput disabled={isDisabled} value={loggedOng.descricao} />
         <Actions>
           {!isDisabled && (
             <Button className="modalButtons" type="submit">
