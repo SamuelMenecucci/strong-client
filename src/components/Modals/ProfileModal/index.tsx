@@ -72,21 +72,16 @@ export function ProfileModal({ isOpen, onRequestClose }: ModalProps) {
 
         <div className="name-picture">
           <span>
-            <label htmlFor="profileInputImg">
+            <label
+              htmlFor="profileInputImg"
+              style={
+                !isDisabled ? { cursor: "pointer" } : { cursor: "initial" }
+              }
+            >
               {loggedOng.imagem ? (
-                <img
-                  style={{ cursor: "pointer" }}
-                  src={loggedOng.imagem}
-                  alt=""
-                  id="profileTag"
-                />
+                <img src={loggedOng.imagem} alt="" id="profileTag" />
               ) : (
-                <img
-                  style={{ cursor: "pointer" }}
-                  src={profileImg}
-                  alt=""
-                  id="profileTag"
-                />
+                <img src={profileImg} alt="" id="profileTag" />
               )}
             </label>
             <input
