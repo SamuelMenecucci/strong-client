@@ -16,9 +16,10 @@ import { TelInput } from "../../Inputs/TelInput";
 import { CNPJInput } from "../../Inputs/CNPJInput";
 import { EmailInput } from "../../Inputs/EmailInput";
 import { SenhaInput } from "../../Inputs/SenhaInput";
+import { api } from "../../../services/api";
 
 export function ProfileModal({ isOpen, onRequestClose }: ModalProps) {
-  const { ong, setOng, vagas, loggedOng, setLoggedOng } = useRequests();
+  const { vagas, loggedOng, editOng } = useRequests();
   const [isDisabled, setIsDisabled] = useState(true);
 
   function handleSetDisabled(e: any) {
@@ -28,13 +29,25 @@ export function ProfileModal({ isOpen, onRequestClose }: ModalProps) {
     console.log(isDisabled);
   }
 
-  function handleEditOng(event: any) {
+  async function handleEditOng(event: any) {
     event.preventDefault();
 
-    const { nome, cnpj, tel, email, senha, descricao }: any =
+    const { nome, cnpj, tel, email, senha, descricao } =
       document.forms["profile"];
 
-    console.log(nome, cnpj, tel, email, senha, descricao.value);
+    const data = {
+      id: loggedOng.id,
+      nome: nome.value,
+      cnpj: cnpj.value,
+      tel: tel.value,
+      email: email.value,
+      senha: senha.value,
+      descricao: descricao.value,
+    };
+
+    await editOng(data);
+
+    window.location.reload();
   }
 
   return (
