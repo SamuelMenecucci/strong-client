@@ -4,9 +4,11 @@ import { Button } from "../Buttons/Button";
 import profileImg from "../../assets/profile-circle.svg";
 import { useState } from "react";
 import { ProfileModal } from "../Modals/ProfileModal";
+import { useRequests } from "../../contexts/useRequests";
 
 export function Header() {
   const currentPage = window.location.pathname;
+  const { loggedOng } = useRequests();
 
   const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
 
@@ -49,9 +51,11 @@ export function Header() {
         <a href="/">Sobre nós</a>
       </Links>
 
-      <Button className="profile" onClick={handleOpenProfileModal}>
-        <img src={profileImg} alt="" />
-      </Button>
+      {loggedOng && (
+        <Button className="profile" onClick={handleOpenProfileModal}>
+          <img src={profileImg} alt="" />
+        </Button>
+      )}
 
       <ProfileModal
         isOpen={isProfileModalOpen}
