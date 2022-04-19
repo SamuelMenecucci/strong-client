@@ -7,8 +7,6 @@ export const GlobalStyle = createGlobalStyle`
         --blue-color: #7579FF;
     }
 
-
-
     html {
         @media (max-width: 1080px){
             font-size:93.75% ;
@@ -17,6 +15,8 @@ export const GlobalStyle = createGlobalStyle`
         @media (max-width: 720px){
             font-size:87.5% ;
         }
+    }
+
 
         * {
             margin:0;
@@ -47,9 +47,9 @@ export const GlobalStyle = createGlobalStyle`
             font-size: 22px;
 
 
-    ::placeholder {
-      color: rgba(0, 0, 0, 0.3);
-      font-size: 18px;
+        ::placeholder {
+        color: rgba(0, 0, 0, 0.3);
+        font-size: 18px;
     }
         }
 
@@ -74,7 +74,6 @@ export const GlobalStyle = createGlobalStyle`
             border: none ;
         }
 
-    }
 
     .react-modal-overlay {
     background-color: rgba(0, 0, 0, 0.5);
@@ -128,5 +127,4 @@ export const GlobalStyle = createGlobalStyle`
 
     position: relative ;
   }
-   
 `;
