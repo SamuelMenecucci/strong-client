@@ -17,6 +17,7 @@ import { CNPJInput } from "../../Inputs/CNPJInput";
 import { EmailInput } from "../../Inputs/EmailInput";
 import { SenhaInput } from "../../Inputs/SenhaInput";
 import { api } from "../../../services/api";
+import { NewVacancyModal } from "../NewVacancyModal";
 
 export function ProfileModal({ isOpen, onRequestClose }: ModalProps) {
   const { vagas, loggedOng, editOng } = useRequests();
@@ -148,6 +149,7 @@ export function ProfileModal({ isOpen, onRequestClose }: ModalProps) {
         {vagas.map((element: any) => {
           return <VacancyCard vagas={element} />;
         })}
+        <NewVacancyModal />
       </MyVacancies>
     </Modal>
   );
