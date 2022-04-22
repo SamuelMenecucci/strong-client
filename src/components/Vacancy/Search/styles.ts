@@ -36,6 +36,8 @@ export const Container = styled.form`
     border: 2px solid var(--blue-color);
     border-radius: 26px;
 
+    margin-bottom: 0;
+
     ::placeholder {
       font-size: 16px;
       color: rgba(27, 28, 55, 0.3);
