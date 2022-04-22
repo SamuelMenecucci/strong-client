@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { VacancyModal } from "../../Modals/VacancyModal";
-import { Content } from "./styles";
+import { Cards, Content } from "./styles";
 
-export function VacancyCard({ vaga }: any) {
+export function VacancyCard({ vagas }: any) {
   const [isVacancyDetailsModalOpen, setIsVacancyDetailsModalOpen] =
     useState(false);
 
@@ -15,23 +15,29 @@ export function VacancyCard({ vaga }: any) {
   }
 
   return (
-    <>
-      <Content onClick={handleOpenVacancyDetailsModal}>
-        <span>
-          <img src={require("../../../assets/user.png")} alt="" />
-        </span>
+    <Cards>
+      {vagas.map((element: any) => {
+        return (
+          <>
+            <Content onClick={handleOpenVacancyDetailsModal}>
+              <span>
+                <img src={require("../../../assets/user.png")} alt="" />
+              </span>
 
-        <div className="info">
-          <h1>{vaga.nomeOng}</h1>
-          <p>{vaga.tag}</p>
-        </div>
-      </Content>
+              <div className="info">
+                <h1>{element.nomeOng}</h1>
+                <p>{element.tag}</p>
+              </div>
+            </Content>
 
-      <VacancyModal
-        isOpen={isVacancyDetailsModalOpen}
-        onRequestClose={handleCloseVacancyDetailsModal}
-        vaga={vaga}
-      />
-    </>
+            <VacancyModal
+              isOpen={isVacancyDetailsModalOpen}
+              onRequestClose={handleCloseVacancyDetailsModal}
+              vaga={element}
+            />
+          </>
+        );
+      })}
+    </Cards>
   );
 }
