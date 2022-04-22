@@ -1,10 +1,15 @@
 import Modal from "react-modal";
-import { ModalProps } from "../../../shared/models";
-import { VacancyForm } from "./styles";
+import { Flex, OngContacts, OngInfo, VacancyForm } from "./styles";
 import { TextareaInput } from "../../Inputs/Textarea/styles";
 import { CloseModalButton } from "../../Buttons/CloseModalButton";
 import { useState } from "react";
 import editImg from "../../../assets/editarIcon.svg";
+import userPicture from "../../../assets/profileInput.svg";
+import { TelInput } from "../../Inputs/TelInput";
+import { EmailInput } from "../../Inputs/EmailInput";
+import emailImg from "../../../assets/email.svg";
+import callImg from "../../../assets/call.svg";
+import { TagSelector } from "../../Inputs/TagSelector";
 
 export function VacancyModal({ isOpen, onRequestClose, vaga }: any) {
   const [isDisabled, setIsDisabled] = useState(true);
@@ -24,9 +29,21 @@ export function VacancyModal({ isOpen, onRequestClose, vaga }: any) {
     >
       <VacancyForm>
         <CloseModalButton onClick={onRequestClose} />
+        {isDisabled ? (
+          <h1 style={{ textAlign: "center", fontSize: "32px" }}>
+            Título da vaga
+          </h1>
+        ) : (
+          <input
+            type="text"
+            style={{ height: "50px" }}
+            placeholder="Título da vaga"
+          />
+        )}
 
         <span>
-          <h1> {vaga.tag} </h1>{" "}
+          {isDisabled ? <h1> HTML - CSS - Javascript </h1> : <TagSelector />}
+
           <button
             style={{ background: "transparent", border: "none" }}
             onClick={handleSetDisabled}
@@ -35,7 +52,42 @@ export function VacancyModal({ isOpen, onRequestClose, vaga }: any) {
           </button>
         </span>
 
-        <TextareaInput placeholder="" value={vaga.description} disabled />
+        <TextareaInput placeholder="" value={text} disabled={isDisabled} />
+
+        <Flex>
+          <OngInfo>
+            <img style={{ background: "red" }} src={userPicture} alt="" />
+            <h1 style={{ fontSize: "32px" }}>Nome da ong</h1>
+          </OngInfo>
+
+          <OngContacts>
+            {isDisabled ? (
+              <>
+                <span className="tel">
+                  <img src={callImg} alt="" />
+                  <h1>(19) 99438-2900</h1>
+                </span>
+                <span className="email">
+                  <img src={emailImg} alt="" />
+                  <h1>samuelmenecucci@gmail.com</h1>
+                </span>
+              </>
+            ) : (
+              <>
+                <TelInput
+                  style={{
+                    width: "200px",
+                    height: "37px",
+                    marginBottom: "28px",
+                  }}
+                />
+                <EmailInput style={{ height: "37px" }} />,
+              </>
+            )}
+          </OngContacts>
+        </Flex>
+
+        <button></button>
       </VacancyForm>
     </Modal>
   );
