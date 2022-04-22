@@ -6,6 +6,9 @@ export const Container = styled.form`
   margin-bottom: 20px;
   display: flex;
   align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-bottom: 60px;
 
   img {
     margin-left: 10px;
@@ -30,8 +33,6 @@ export const Container = styled.form`
     top: 0;
     left: 0;
     background: none;
-
-    width: 1300px;
 
     border: 2px solid var(--blue-color);
     border-radius: 26px;
