@@ -49,3 +49,8 @@ export const Content = styled.div`
     }
   }
 `;
+
+export const Cards = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+`;
