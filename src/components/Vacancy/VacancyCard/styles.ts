@@ -3,7 +3,12 @@ import styled from "styled-components";
 export const Content = styled.div`
   width: 375px;
   height: 190px;
-  background-color: rgba(117, 121, 255, 0.2);
+  background: linear-gradient(
+    to right,
+    rgba(178, 36, 239, 0.3),
+    rgba(117, 121, 255, 0.3),
+    rgba(117, 121, 255, 0.3)
+  );
   border-radius: 40px;
 
   display: flex;
