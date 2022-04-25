@@ -8,7 +8,7 @@ import { Button } from "../../Buttons/Button";
 import { PhotosUpload } from "../../../Helper";
 import { ModalProps } from "../../../shared/models";
 import { useRequests } from "../../../contexts/useRequests";
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { VacancyCard } from "../../Vacancy/VacancyCard";
 import { Textarea } from "../../Inputs/Textarea";
 import { CloseModalButton } from "../../Buttons/CloseModalButton";
@@ -16,11 +16,11 @@ import { TelInput } from "../../Inputs/TelInput";
 import { CNPJInput } from "../../Inputs/CNPJInput";
 import { EmailInput } from "../../Inputs/EmailInput";
 import { SenhaInput } from "../../Inputs/SenhaInput";
-import { api } from "../../../services/api";
+import { api, jsonServer } from "../../../services/api";
 import { NewVacancyModal } from "../NewVacancyModal";
 
 export function ProfileModal({ isOpen, onRequestClose }: ModalProps) {
-  const { vagas, loggedOng, editOng } = useRequests();
+  const { loggedOng, editOng } = useRequests();
   const [isDisabled, setIsDisabled] = useState(true);
   const [photo, setPhoto] = useState<any>({});
 
@@ -28,7 +28,6 @@ export function ProfileModal({ isOpen, onRequestClose }: ModalProps) {
     e.preventDefault();
 
     !isDisabled ? setIsDisabled(true) : setIsDisabled(false);
-    console.log(isDisabled);
   }
 
   async function handleEditOng(event: any) {
@@ -55,6 +54,17 @@ export function ProfileModal({ isOpen, onRequestClose }: ModalProps) {
     await editOng(formData);
 
     window.location.reload();
+  }
+
+  const [vagas, setVagas] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    api.get("/getVacancies").then((res) => setVagas(res.data));
+  }, []);
+
+  if (isLoading) {
+    return <p>carregando</p>;
   }
 
   return (
@@ -145,10 +155,7 @@ export function ProfileModal({ isOpen, onRequestClose }: ModalProps) {
             <img src={addImg} alt="" />{" "}
           </button>
         </span>
-
-        {vagas.map((element: any) => {
-          return <VacancyCard vagas={element} />;
-        })}
+        <VacancyCard vagas={vagas} />
         <NewVacancyModal />
       </MyVacancies>
     </Modal>
