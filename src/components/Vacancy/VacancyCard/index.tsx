@@ -25,7 +25,7 @@ export function VacancyCard({ vagas }: any) {
               </span>
 
               <div className="info">
-                <h1>{element.nomeOng}</h1>
+                <h1>{element.titulo}</h1>
                 <p>{element.tag}</p>
               </div>
             </Content>
