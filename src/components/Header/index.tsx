@@ -49,13 +49,17 @@ export function Header() {
           Feedback
         </a>
         <a href="/">Sobre nós</a>
-      </Links>
 
-      {loggedOng && (
-        <Button className="profile" onClick={handleOpenProfileModal}>
-          <img src={profileImg} alt="" />
-        </Button>
-      )}
+        {loggedOng && (
+          <Button
+            style={{ marginLeft: "130px" }}
+            className="profile"
+            onClick={handleOpenProfileModal}
+          >
+            <img src={profileImg} alt="" />
+          </Button>
+        )}
+      </Links>
 
       <ProfileModal
         isOpen={isProfileModalOpen}
