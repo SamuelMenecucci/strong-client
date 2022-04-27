@@ -6,6 +6,23 @@ export const VacancyForm = styled.form`
     align-items: center;
     justify-content: space-between;
   }
+
+  select {
+    border: 2px solid var(--purple-color);
+    padding: 2px;
+    border-radius: 6px;
+    color: var(--purple-color);
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 24px;
+
+    option {
+      color: #000000;
+      font-size: 14px;
+      font-weight: bold;
+      line-height: 24px;
+    }
+  }
 `;
 
 export const Flex = styled.div`
@@ -29,6 +46,7 @@ export const OngInfo = styled.div`
 
   h1 {
     margin-left: 17px;
+    word-break: break-all;
   }
 `;
 
