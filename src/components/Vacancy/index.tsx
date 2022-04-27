@@ -9,11 +9,19 @@ export function Vacancy() {
   const [vagas, setVagas] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    api.get("/getVacancies").then((res) => {
+  const getVacancies = async () => {
+    try {
+      const res = await api.get("/getVacancies");
+
       setVagas(res.data);
       setIsLoading(false);
-    });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    getVacancies();
   }, []);
 
   if (isLoading) {
