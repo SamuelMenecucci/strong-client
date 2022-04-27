@@ -2,7 +2,12 @@ import { useState } from "react";
 import { VacancyModal } from "../../Modals/VacancyModal";
 import { Cards, Content } from "./styles";
 
-export function VacancyCard({ vagas }: any) {
+type VacancyCardProps = {
+  vagas: any;
+  sizeType?: string;
+};
+
+export function VacancyCard({ vagas, sizeType }: VacancyCardProps) {
   const [isVacancyDetailsModalOpen, setIsVacancyDetailsModalOpen] =
     useState(false);
 
@@ -14,12 +19,17 @@ export function VacancyCard({ vagas }: any) {
     setIsVacancyDetailsModalOpen(false);
   }
 
+  console.log(vagas);
+
   return (
-    <Cards>
+    <Cards sizeType={sizeType || ""}>
       {vagas.map((element: any) => {
         return (
           <>
-            <Content onClick={handleOpenVacancyDetailsModal}>
+            <Content
+              sizeType={sizeType || ""}
+              onClick={handleOpenVacancyDetailsModal}
+            >
               <span>
                 <img src={require("../../../assets/user.png")} alt="" />
               </span>
