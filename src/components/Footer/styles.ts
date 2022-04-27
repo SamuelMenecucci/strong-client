@@ -4,12 +4,6 @@ import footerImg from "../../assets/footerBackground.svg";
 export const Container = styled.footer`
   background: url(${footerImg}) no-repeat center center;
   background-size: 100%;
-  margin: inherit;
-  margin-top: 40px;
-  /* width: 100%; */
-  /* margin: auto; */
-
-  /* background: url(images/bg.jpg) no-repeat center center fixed;  */
 
   display: flex;
   justify-content: space-between;
