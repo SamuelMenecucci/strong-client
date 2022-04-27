@@ -1,36 +1,45 @@
 import styled from "styled-components";
 
 export const TagSelectorStyle = styled.div`
-  margin-bottom: 10px;
+  details {
+    width: 231px;
 
-  fieldset {
-    legend {
-      font-size: 18px;
-      font-weight: 600;
-      background: -webkit-linear-gradient(
-        var(--purple-color),
-        var(--blue-color)
-      );
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 17px;
-      margin-right: 10px;
-      margin-left: 40px;
+    summary {
+      background: linear-gradient(to right, #b224ef, #7579ff, #7579ff);
+      border-radius: 16px;
+      list-style: none;
+      color: #fff;
+      font-size: 22px;
+      text-align: center;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      img {
+        margin-left: 5px;
+      }
     }
+  }
 
-    position: relative;
+  .item {
+    display: flex;
+    flex-direction: column;
+    padding: 9px 13px;
 
-    width: 320px;
-    height: 70px;
-    border: 2px solid var(--purple-color);
-    border-radius: 40px;
+    border: 1px solid red;
+    background-color: #fff;
+    width: auto;
+    position: fixed;
+    border: 1px solid var(--purple-color);
+    border-radius: 5px 5px 16px 16px;
+    width: 231px;
 
-    input {
-      position: absolute;
-      top: -30px;
-      border: none;
-      background: transparent;
-      outline: none;
+    label {
+      padding: 1px 0;
+      input[type="checkbox"] {
+        width: auto;
+        margin-right: 8px;
+      }
     }
   }
 `;
