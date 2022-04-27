@@ -1,10 +1,11 @@
 import ReactModal from "react-modal";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { Feedback } from "./components/Feedback";
+import { Presentation } from "./components/Presentation";
+import { Vacancy } from "./components/Vacancy";
 import { RequestsProvider } from "./contexts/useRequests";
+import { Layout } from "./layout";
 import { Feedbacks } from "./pages/Feedbacks";
-
-import { Home } from "./pages/Home";
-import { Vacancies } from "./pages/Vacancies";
 import { GlobalStyle } from "./styles/global";
 
 ReactModal.setAppElement("#root");
@@ -18,9 +19,11 @@ export function App() {
     <RequestsProvider>
       <BrowserRouter>
         <Switch>
-          <Route path="/home" exact component={Home} />
-          <Route path="/feedbacks" exact component={Feedbacks} />
-          <Route path="/vacancies" exact component={Vacancies} />
+          <Layout>
+            <Route path="/home" exact component={Presentation} />
+            <Route path="/feedbacks" exact component={Feedback} />
+            <Route path="/vacancies" exact component={Vacancy} />
+          </Layout>
         </Switch>
       </BrowserRouter>
 
