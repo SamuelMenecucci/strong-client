@@ -2,18 +2,18 @@ import styled from "styled-components";
 
 export const Container = styled.header`
   background-color: var(--primary-color);
-  margin: 21px 15px;
-  /* max-width: 1200px; */
+
+  padding: 11px 43px;
+
+  min-width: 1100px;
+  width: 98%;
+  margin: 0 auto;
 
   border-radius: 14.42px;
 
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  padding: 11px 43px;
-
-  min-width: 1200px;
 
   button.profile {
     padding: 7px 13px;
@@ -34,6 +34,9 @@ export const Content = styled.div`
 `;
 
 export const Links = styled.div`
+  display: flex;
+  align-items: center;
+
   a {
     color: #fff;
     text-decoration: none;
