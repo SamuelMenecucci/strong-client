@@ -4,6 +4,7 @@ import searchImg from "../../assets/search.svg";
 export const Container = styled.div`
   width: 1300px;
   margin: 0 auto;
+  padding-top: 40px;
 `;
 
 export const Content = styled.div`
