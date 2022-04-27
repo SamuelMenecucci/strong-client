@@ -23,6 +23,14 @@ export function ProfileModal({ isOpen, onRequestClose }: ModalProps) {
   const { loggedOng, editOng } = useRequests();
   const [isDisabled, setIsDisabled] = useState(true);
   const [photo, setPhoto] = useState<any>({});
+  const [isNewVacancyModalOpen, setIsNewVacancyModalOpen] = useState(false);
+
+  function handleOpenNewVacancyModal() {
+    setIsNewVacancyModalOpen(true);
+  }
+  function handleCloseNewVacancyModal() {
+    setIsNewVacancyModalOpen(false);
+  }
 
   function handleSetDisabled(e: any) {
     e.preventDefault();
@@ -63,9 +71,9 @@ export function ProfileModal({ isOpen, onRequestClose }: ModalProps) {
     api.get("/getVacancies").then((res) => setVagas(res.data));
   }, []);
 
-  if (isLoading) {
-    return <p>carregando</p>;
-  }
+  // if (isLoading) {
+  //   return <p>carregando</p>;
+  // }
 
   return (
     <Modal
@@ -151,12 +159,15 @@ export function ProfileModal({ isOpen, onRequestClose }: ModalProps) {
         <span>
           <h1>Suas Vagas</h1>
 
-          <button>
+          <button onClick={handleOpenNewVacancyModal}>
             <img src={addImg} alt="" />{" "}
           </button>
         </span>
-        <VacancyCard vagas={vagas} />
-        <NewVacancyModal />
+        <VacancyCard vagas={vagas} sizeType="profileModal" />
+        <NewVacancyModal
+          isOpen={isNewVacancyModalOpen}
+          onRequestClose={handleCloseNewVacancyModal}
+        />
       </MyVacancies>
     </Modal>
   );
