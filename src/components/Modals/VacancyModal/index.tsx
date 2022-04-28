@@ -41,6 +41,10 @@ export function VacancyModal({ isOpen, onRequestClose, vaga }: any) {
       .then((res) => window.location.reload());
   }
 
+  function handleDeleteVacancy(id: any) {
+    api.delete(`/deleteVacancy/${id}`).then((res) => window.location.reload());
+  }
+
   return (
     <Modal
       isOpen={isOpen}
@@ -71,7 +75,7 @@ export function VacancyModal({ isOpen, onRequestClose, vaga }: any) {
             <TagSelector onChange={(e) => setTags([...tags, e.target.value])} />
           )}
 
-          {vaga.id == loggedOng.id && (
+          {vaga.ongid == loggedOng.id && (
             <button
               style={{ background: "transparent", border: "none" }}
               onClick={handleSetDisabled}
@@ -125,16 +129,32 @@ export function VacancyModal({ isOpen, onRequestClose, vaga }: any) {
           </OngContacts>
         </Flex>
 
-        <Button
-          style={{
-            textAlign: "center",
-            padding: "11px 71px",
-            margin: "20px auto",
-          }}
-          type="submit"
-        >
-          Salvar
-        </Button>
+        {!isDisabled ? (
+          <Button
+            style={{
+              textAlign: "center",
+              padding: "11px 71px",
+              margin: "20px auto",
+            }}
+            type="submit"
+          >
+            Salvar
+          </Button>
+        ) : (
+          vaga.ongid === loggedOng.id && (
+            <Button
+              style={{
+                textAlign: "center",
+                padding: "11px 26px",
+                margin: "20px auto",
+              }}
+              type="button"
+              onClick={() => handleDeleteVacancy(vaga.vagaid)}
+            >
+              Finalizar vaga
+            </Button>
+          )
+        )}
       </VacancyForm>
     </Modal>
   );
