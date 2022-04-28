@@ -18,6 +18,8 @@ export function VacancyModal({ isOpen, onRequestClose, vaga }: any) {
   const { loggedOng } = useRequests();
   const [tags, setTags] = useState<any>([]);
 
+  console.log(vaga);
+
   function handleSetDisabled(e: any) {
     e.preventDefault();
 
@@ -33,7 +35,7 @@ export function VacancyModal({ isOpen, onRequestClose, vaga }: any) {
         titulo: tituloVaga.value,
         descricao: descricaoVaga.value,
         tags,
-        loggedOng: loggedOng.id,
+        id: vaga.vagaid,
       })
       .then((res) => console.log(res.data));
   }
