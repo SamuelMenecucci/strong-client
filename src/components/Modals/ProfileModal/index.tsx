@@ -64,11 +64,13 @@ export function ProfileModal({ isOpen, onRequestClose }: ModalProps) {
     window.location.reload();
   }
 
-  const [vagas, setVagas] = useState([]);
+  const [vagasLoggedOng, setVagasLoggedOng] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    api.get("/getVacancies").then((res) => setVagas(res.data));
+    api
+      .get(`/ongVacancies/${loggedOng.id}`)
+      .then((res) => setVagasLoggedOng(res.data));
   }, []);
 
   // if (isLoading) {
@@ -163,7 +165,7 @@ export function ProfileModal({ isOpen, onRequestClose }: ModalProps) {
             <img src={addImg} alt="" />{" "}
           </button>
         </span>
-        <VacancyCard vagas={vagas} sizeType="profileModal" />
+        <VacancyCard vagas={vagasLoggedOng} sizeType="profileModal" />
         <NewVacancyModal
           isOpen={isNewVacancyModalOpen}
           onRequestClose={handleCloseNewVacancyModal}
