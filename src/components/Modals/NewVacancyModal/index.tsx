@@ -21,7 +21,7 @@ export function NewVacancyModal({ isOpen, onRequestClose }: any) {
   function handleNovaVaga(e: FormEvent) {
     e.preventDefault();
 
-    api.post("/newVacancy", { vaga });
+    api.post("/newVacancy", { vaga }).then((res) => window.location.reload());
   }
 
   return (

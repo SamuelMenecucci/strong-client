@@ -12,6 +12,7 @@ import callImg from "../../../assets/call.svg";
 import { TagSelector } from "../../Inputs/TagSelector";
 import { useRequests } from "../../../contexts/useRequests";
 import { api } from "../../../services/api";
+import { Button } from "../../Buttons/Button";
 
 export function VacancyModal({ isOpen, onRequestClose, vaga }: any) {
   const [isDisabled, setIsDisabled] = useState(true);
@@ -37,7 +38,7 @@ export function VacancyModal({ isOpen, onRequestClose, vaga }: any) {
         tags,
         id: vaga.vagaid,
       })
-      .then((res) => console.log(res.data));
+      .then((res) => window.location.reload());
   }
 
   return (
@@ -124,7 +125,16 @@ export function VacancyModal({ isOpen, onRequestClose, vaga }: any) {
           </OngContacts>
         </Flex>
 
-        <button>bora</button>
+        <Button
+          style={{
+            textAlign: "center",
+            padding: "11px 71px",
+            margin: "20px auto",
+          }}
+          type="submit"
+        >
+          Salvar
+        </Button>
       </VacancyForm>
     </Modal>
   );
