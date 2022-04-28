@@ -2,7 +2,7 @@ import Modal from "react-modal";
 import { Flex, OngContacts, OngInfo, VacancyForm } from "./styles";
 import { TextareaInput } from "../../Inputs/Textarea/styles";
 import { CloseModalButton } from "../../Buttons/CloseModalButton";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import editImg from "../../../assets/editarIcon.svg";
 import userPicture from "../../../assets/profileInput.svg";
 import { TelInput } from "../../Inputs/TelInput";
@@ -11,10 +11,12 @@ import emailImg from "../../../assets/email.svg";
 import callImg from "../../../assets/call.svg";
 import { TagSelector } from "../../Inputs/TagSelector";
 import { useRequests } from "../../../contexts/useRequests";
+import { api } from "../../../services/api";
 
 export function VacancyModal({ isOpen, onRequestClose, vaga }: any) {
   const [isDisabled, setIsDisabled] = useState(true);
   const { loggedOng } = useRequests();
+  const [tags, setTags] = useState<any>([]);
 
   function handleSetDisabled(e: any) {
     e.preventDefault();
@@ -22,7 +24,20 @@ export function VacancyModal({ isOpen, onRequestClose, vaga }: any) {
     !isDisabled ? setIsDisabled(true) : setIsDisabled(false);
   }
 
-  console.log(vaga);
+  function handleEditVacancy(e: FormEvent) {
+    e.preventDefault();
+    let { tituloVaga, descricaoVaga } = document.forms["editVacancy"];
+
+    api
+      .put("/editVacancy", {
+        titulo: tituloVaga.value,
+        descricao: descricaoVaga.value,
+        tags,
+        loggedOng: loggedOng.id,
+      })
+      .then((res) => console.log(res.data));
+  }
+
   return (
     <Modal
       isOpen={isOpen}
@@ -30,7 +45,7 @@ export function VacancyModal({ isOpen, onRequestClose, vaga }: any) {
       className="react-VacancyDetailsModal"
       overlayClassName="react-modal-overlay"
     >
-      <VacancyForm>
+      <VacancyForm id="editVacancy" onSubmit={handleEditVacancy}>
         <CloseModalButton onClick={onRequestClose} />
         {isDisabled ? (
           <h1 style={{ textAlign: "center", fontSize: "32px" }}>
@@ -39,6 +54,7 @@ export function VacancyModal({ isOpen, onRequestClose, vaga }: any) {
         ) : (
           <input
             type="text"
+            id="tituloVaga"
             style={{ height: "50px" }}
             defaultValue={vaga.titulo}
             placeholder="Título da vaga"
@@ -49,12 +65,7 @@ export function VacancyModal({ isOpen, onRequestClose, vaga }: any) {
           {isDisabled ? (
             <h1> {vaga.tag}</h1>
           ) : (
-            <select name="" id="">
-              <option value="">HTML</option>
-              <option value="">CSS</option>
-              <option value="">Javascript</option>
-              <option value="">Java</option>
-            </select>
+            <TagSelector onChange={(e) => setTags([...tags, e.target.value])} />
           )}
 
           {vaga.id == loggedOng.id && (
@@ -68,30 +79,30 @@ export function VacancyModal({ isOpen, onRequestClose, vaga }: any) {
         </span>
 
         <TextareaInput
-          placeholder=""
+          id="descricaoVaga"
           defaultValue={vaga.descricao}
           disabled={isDisabled}
         />
 
         <Flex>
           <OngInfo>
-            <img style={{ background: "red" }} src={vaga.imagem} alt="" />
+            <img src={vaga.imagem} alt="" />
             <h1 style={{ fontSize: "32px" }}>{vaga.nome}</h1>
           </OngInfo>
 
           <OngContacts>
-            {isDisabled ? (
-              <>
-                <span className="tel">
-                  <img src={callImg} alt="" />
-                  <h1>{vaga.tel}</h1>
-                </span>
-                <span className="email">
-                  <img src={emailImg} alt="" />
-                  <h1>{vaga.email}</h1>
-                </span>
-              </>
-            ) : (
+            {/* {isDisabled ? ( */}
+            <>
+              <span className="tel">
+                <img src={callImg} alt="" />
+                <h1>{vaga.tel}</h1>
+              </span>
+              <span className="email">
+                <img src={emailImg} alt="" />
+                <h1>{vaga.email}</h1>
+              </span>
+            </>
+            {/* ) : (
               <>
                 <TelInput
                   style={{
@@ -106,12 +117,12 @@ export function VacancyModal({ isOpen, onRequestClose, vaga }: any) {
                   defaultValue={vaga.email}
                 />
                 ,
-              </>
-            )}
+              </> */}
+            {/* )} */}
           </OngContacts>
         </Flex>
 
-        <button></button>
+        <button>bora</button>
       </VacancyForm>
     </Modal>
   );
