@@ -8,6 +8,7 @@ import { VacancyCard } from "./VacancyCard";
 export function Vacancy() {
   const [vagas, setVagas] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [foundVacancies, setFoundVacancies] = useState([]);
 
   const getVacancies = async () => {
     try {
@@ -24,6 +25,12 @@ export function Vacancy() {
     getVacancies();
   }, []);
 
+  useEffect(() => {
+    api
+      .get(`searchVacancy${window.location.search}`)
+      .then((res) => setFoundVacancies(res.data));
+  }, []);
+
   if (isLoading) {
     return <p>carregando</p>;
   }
@@ -31,7 +38,11 @@ export function Vacancy() {
   return (
     <Container>
       <Search />
-      <VacancyCard vagas={vagas} />;
+      {foundVacancies.length ? (
+        <VacancyCard vagas={foundVacancies} />
+      ) : (
+        <VacancyCard vagas={vagas} />
+      )}
     </Container>
   );
 }
