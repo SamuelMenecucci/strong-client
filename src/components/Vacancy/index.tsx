@@ -31,14 +31,22 @@ export function Vacancy() {
       .then((res) => setFoundVacancies(res.data));
   }, []);
 
-  if (isLoading) {
-    return <p>carregando</p>;
-  }
+  // if (isLoading) {
+  //   return (
+  //     <h1 style={{ textAlign: "center", fontSize: "32px", padding: "50px" }}>
+  //       Carregando...
+  //     </h1>
+  //   );
+  // }
 
   return (
     <Container>
       <Search />
-      {foundVacancies.length ? (
+      {isLoading ? (
+        <h1 style={{ textAlign: "center", fontSize: "32px", padding: "50px" }}>
+          Carregando...
+        </h1>
+      ) : foundVacancies.length ? (
         <VacancyCard vagas={foundVacancies} />
       ) : (
         <VacancyCard vagas={vagas} />
