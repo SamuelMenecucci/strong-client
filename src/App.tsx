@@ -5,7 +5,6 @@ import { Presentation } from "./components/Presentation";
 import { Vacancy } from "./components/Vacancy";
 import { RequestsProvider } from "./contexts/useRequests";
 import { Layout } from "./layout";
-import { Feedbacks } from "./pages/Feedbacks";
 import { GlobalStyle } from "./styles/global";
 
 ReactModal.setAppElement("#root");
