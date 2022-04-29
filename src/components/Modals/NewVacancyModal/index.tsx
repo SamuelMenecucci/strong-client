@@ -1,4 +1,3 @@
-import { table } from "console";
 import { FormEvent, useState } from "react";
 import ReactModal from "react-modal";
 import { useRequests } from "../../../contexts/useRequests";
@@ -21,7 +20,28 @@ export function NewVacancyModal({ isOpen, onRequestClose }: any) {
   function handleNovaVaga(e: FormEvent) {
     e.preventDefault();
 
-    api.post("/newVacancy", { vaga }).then((res) => window.location.reload());
+    let formatTag = [];
+    let formatVaga = {};
+
+    let contador = vaga.tag.reduce((acc: any, elemento: any) => {
+      if (acc[elemento]) {
+        acc[elemento] += 1;
+      } else acc[elemento] = 1;
+
+      return acc;
+    }, {});
+
+    for (let element in contador) {
+      if (contador[element] == 1 || contador[element] % 2 == 1) {
+        formatTag.push(element);
+      }
+    }
+
+    formatVaga = { ...vaga, tag: formatTag };
+
+    api
+      .post("/newVacancy", { vaga: formatVaga })
+      .then((res) => window.location.reload());
   }
 
   return (
