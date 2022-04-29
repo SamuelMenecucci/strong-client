@@ -1,5 +1,6 @@
 import ReactModal from "react-modal";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
 import { Feedback } from "./components/Feedback";
 import { Presentation } from "./components/Presentation";
 import { Vacancy } from "./components/Vacancy";
@@ -27,6 +28,7 @@ export function App() {
       </BrowserRouter>
 
       <GlobalStyle />
+      <Toaster />
     </RequestsProvider>
   );
 }
