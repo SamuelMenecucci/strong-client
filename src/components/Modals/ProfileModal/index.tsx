@@ -68,9 +68,11 @@ export function ProfileModal({ isOpen, onRequestClose }: ModalProps) {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    api
-      .get(`/ongVacancies/${loggedOng.id}`)
-      .then((res) => setVagasLoggedOng(res.data));
+    if (loggedOng) {
+      api
+        .get(`/ongVacancies/${loggedOng.id}`)
+        .then((res) => setVagasLoggedOng(res.data));
+    }
   }, []);
 
   // if (isLoading) {
