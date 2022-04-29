@@ -13,7 +13,14 @@ import { SenhaInput } from "../../Inputs/SenhaInput";
 import { InputMasks } from "../../../Helper";
 
 export function RegisterModal({ isOpen, onRequestClose }: ModalProps) {
-  const [registerOng, setRegisterOng] = useState<OngType>({} as OngType);
+  const [registerOng, setRegisterOng] = useState<OngType>({
+    nomeOng: "",
+    cnpj: "",
+    tel: "",
+    email: "",
+    senha: "",
+    description: "",
+  } as OngType);
 
   const { createOng } = useRequests();
 
@@ -21,8 +28,6 @@ export function RegisterModal({ isOpen, onRequestClose }: ModalProps) {
     event.preventDefault();
 
     await createOng(registerOng);
-
-    window.location.href = "/";
   }
 
   return (
@@ -60,6 +65,7 @@ export function RegisterModal({ isOpen, onRequestClose }: ModalProps) {
             onChange={(e) =>
               setRegisterOng({ ...registerOng, tel: e.target.value })
             }
+            // onKeyDown={(e) => InputMasks.apply(e.target, "TelMask")}
           />
           <EmailInput
             value={registerOng.email}
