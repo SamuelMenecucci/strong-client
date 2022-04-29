@@ -10,6 +10,7 @@ import { TelInput } from "../../Inputs/TelInput";
 import { CNPJInput } from "../../Inputs/CNPJInput";
 import { EmailInput } from "../../Inputs/EmailInput";
 import { SenhaInput } from "../../Inputs/SenhaInput";
+import { InputMasks } from "../../../Helper";
 
 export function RegisterModal({ isOpen, onRequestClose }: ModalProps) {
   const [registerOng, setRegisterOng] = useState<OngType>({} as OngType);
@@ -51,6 +52,7 @@ export function RegisterModal({ isOpen, onRequestClose }: ModalProps) {
             onChange={(e) =>
               setRegisterOng({ ...registerOng, cnpj: e.target.value })
             }
+            onKeyDown={(e) => InputMasks.apply(e.target, "CNPJMask")}
           />
 
           <TelInput
