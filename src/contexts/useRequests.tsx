@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import toast from "react-hot-toast";
 import { api } from "../services/api";
 import { OngType } from "../shared/models";
@@ -21,16 +21,28 @@ export function RequestsProvider({ children }: any) {
   const [vagas, setVagas] = useState([]);
 
   async function createOng(data: OngType) {
-    api
-      .post("createOng", { ...data })
-      .then((res) => {
-        toast.success("Criado!");
+    // api
+    //   .post("createOng", { ...data })
+    //   .then((res) => {
+    //     toast.success("Criado!");
+    //     sessionStorage.setItem("ong", JSON.stringify(res.data));
+    //     window.location.href = "/";
+    //   })
+    //   .catch((err) => {
+    //     toast.error(err.response.data);
+    //   });
+
+    toast.promise(api.post("createOng", { ...data }), {
+      loading: "Salvando...",
+      success: (res) => {
         sessionStorage.setItem("ong", JSON.stringify(res.data));
-        window.location.href = "/";
-      })
-      .catch((err) => {
-        toast.error(err.response.data);
-      });
+        setTimeout(() => {
+          window.location.href = "/";
+        }, 1000);
+        return "Criado!";
+      },
+      error: (err) => err.response.data,
+    });
   }
 
   async function editOng(data: any) {
