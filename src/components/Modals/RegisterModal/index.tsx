@@ -11,7 +11,6 @@ import { CNPJInput } from "../../Inputs/CNPJInput";
 import { EmailInput } from "../../Inputs/EmailInput";
 import { SenhaInput } from "../../Inputs/SenhaInput";
 import { InputMasks } from "../../../Helper";
-import toast from "react-hot-toast";
 
 export function RegisterModal({ isOpen, onRequestClose }: ModalProps) {
   const [registerOng, setRegisterOng] = useState<OngType>({
@@ -27,14 +26,6 @@ export function RegisterModal({ isOpen, onRequestClose }: ModalProps) {
 
   async function handleCreateOng(event: FormEvent) {
     event.preventDefault();
-
-    if (registerOng.cnpj.replace(/\D/g, "").length < 14) {
-      return toast.error("CNPJ Inválido");
-    }
-
-    if (registerOng.tel.replace(/\D/g, "").length < 11) {
-      return toast.error("Telefone Inválido");
-    }
 
     await createOng(registerOng);
   }
