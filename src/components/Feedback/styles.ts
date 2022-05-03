@@ -3,13 +3,11 @@ import styled from "styled-components";
 export const Container = styled.div`
   width: 300px;
   height: 550px;
-  margin: auto;
-  /* height: 500px; */
   padding: 27px 21px;
   background: rgba(117, 121, 255, 0.2);
   border-radius: 40px;
   margin-top: 87px;
-  box-shadow: 0 4px 24px 0 #434343;
+  /* box-shadow: 0 4px 22px 0 #434343; */
   position: relative;
   margin-bottom: 40px;
 `;

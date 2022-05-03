@@ -1,16 +1,45 @@
 import { Container, Info, Text } from "./styles";
-import userImg from "../../assets/user.png";
+import { jsonServer } from "../../services/api";
 
-import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { useEffect, useState } from "react";
+import Slider from "react-slick";
+import setaDireitaImg from "../../assets/setaDireita.svg";
+import setaEsquerdaImg from "../../assets/setaEsquerda.svg";
 
 export function Feedback({ feedback }: any) {
+  const [feedbacks, setFeedbacks] = useState<any>([]);
+
+  useEffect(() => {
+    jsonServer.get("/feedbacks").then((res) => setFeedbacks(res.data));
+  }, []);
+
+  let settings = {
+    infinite: true,
+    slidesToScroll: 4,
+    slidesToShow: 4,
+    // accessibility: true,
+    dots: true,
+    autoplay: true,
+    speed: 500,
+  };
+
   return (
-    <Container>
-      <Text>{feedback.feedback}</Text>
-      <Info>
-        <img src={userImg} alt="" />
-        <span>{feedback.name}</span>
-      </Info>
-    </Container>
+    <div style={{ width: "1500px", margin: "auto" }}>
+      <Slider {...settings}>
+        {feedbacks.map((element: any) => {
+          return (
+            <div style={{ margin: "0 20px " }}>
+              <Container>
+                <Text>{element.feedback}</Text>
+                <Info>
+                  <img src={element.imagem} alt="" />
+                  <span>{element.name}</span>
+                </Info>
+              </Container>
+            </div>
+          );
+        })}
+      </Slider>
+    </div>
   );
 }
