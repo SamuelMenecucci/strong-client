@@ -5,9 +5,15 @@ import likeImg from "../../../assets/like-dislike.svg";
 import { CloseModalButton } from "../../Buttons/CloseModalButton";
 import { api } from "../../../services/api";
 import toast from "react-hot-toast";
+import { FormEvent, useState } from "react";
 
 export function NewFeedback({ isOpen, onRequestClose, vaga }: any) {
-  function handleDeleteVacancy(id: any) {
+  const [newFeedback, setNewFeedback] = useState({
+    ongId: vaga.ongid,
+    feedback: "",
+  });
+
+  async function handleDeleteVacancy(id: any) {
     toast.promise(api.delete(`/deleteVacancy/${id}`), {
       loading: "Excluindo...",
       success: (res) => {
@@ -17,6 +23,16 @@ export function NewFeedback({ isOpen, onRequestClose, vaga }: any) {
         return "Excluído";
       },
       error: "Algo deu errado.",
+    });
+  }
+
+  async function handleCreateNewFeedback(e: FormEvent) {
+    e.preventDefault();
+    await handleDeleteVacancy(vaga.vagaid);
+    toast.promise(api.post("/newFeedback", { ...newFeedback }), {
+      loading: "Salvando ...",
+      success: "Obrigado pelo seu Feedback!",
+      error: "Algo deu errado ",
     });
   }
 
@@ -39,14 +55,22 @@ export function NewFeedback({ isOpen, onRequestClose, vaga }: any) {
         <img src={likeImg} alt="" style={{ marginRight: "13px" }} />
         Feedback
       </h1>
-      <Textarea placeholder="Inserir FeedBack" />
+      <form onSubmit={handleCreateNewFeedback}>
+        <Textarea
+          placeholder="Inserir FeedBack"
+          onChange={(e) =>
+            setNewFeedback({ ...newFeedback, feedback: e.target.value })
+          }
+        />
 
-      <Button
-        onClick={() => handleDeleteVacancy(vaga.vagaid)}
-        style={{ padding: "11px 32px", margin: "auto" }}
-      >
-        Concluir
-      </Button>
+        <Button
+          // onClick={() => handleDeleteVacancy(vaga.vagaid)}
+          style={{ padding: "11px 32px", margin: "auto" }}
+          type="submit"
+        >
+          Concluir
+        </Button>
+      </form>
     </ReactModal>
   );
 }
