@@ -5,12 +5,14 @@ import profileImg from "../../assets/profile-circle.svg";
 import { useState } from "react";
 import { ProfileModal } from "../Modals/ProfileModal";
 import { useRequests } from "../../contexts/useRequests";
+import { LoginModal } from "../Modals/LoginModal";
 
 export function Header() {
   const currentPage = window.location.pathname;
   const { loggedOng } = useRequests();
 
   const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
 
   function handleOpenProfileModal() {
     setIsProfileModalOpen(true);
@@ -18,6 +20,14 @@ export function Header() {
 
   function handleCloseProfileModal() {
     setIsProfileModalOpen(false);
+  }
+
+  function handleOpenLoginModal() {
+    setIsLoginModalOpen(true);
+  }
+
+  function handleCloseLoginModal() {
+    setIsLoginModalOpen(false);
   }
 
   return (
@@ -50,11 +60,19 @@ export function Header() {
         </a>
         <a href="/">Sobre nós</a>
 
-        {loggedOng && (
+        {loggedOng ? (
           <Button
             style={{ marginLeft: "130px" }}
             className="profile"
             onClick={handleOpenProfileModal}
+          >
+            <img src={profileImg} alt="" />
+          </Button>
+        ) : (
+          <Button
+            style={{ marginLeft: "130px" }}
+            className="profile"
+            onClick={handleOpenLoginModal}
           >
             <img src={profileImg} alt="" />
           </Button>
@@ -64,6 +82,11 @@ export function Header() {
       <ProfileModal
         isOpen={isProfileModalOpen}
         onRequestClose={handleCloseProfileModal}
+      />
+
+      <LoginModal
+        isOpen={isLoginModalOpen}
+        onRequestClose={handleCloseLoginModal}
       />
     </Container>
   );
