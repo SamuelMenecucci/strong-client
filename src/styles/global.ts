@@ -153,4 +153,16 @@ export const GlobalStyle = createGlobalStyle`
 
     position: relative ;
   }
+
+  .react-login-modal {
+    width: 700px;
+    max-width: 100%;
+    max-width:  950px;
+    background: linear-gradient(to right, #b224ef, #7579ff, #7579ff);
+
+    padding:  30px 77px ;
+
+    border-radius:16px ;
+    position: relative ;
+  }
 `;
