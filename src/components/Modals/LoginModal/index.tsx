@@ -1,10 +1,29 @@
-import { FormEvent } from "react";
+import { FormEvent, useState } from "react";
+import toast from "react-hot-toast";
 import Modal from "react-modal";
+import { useRequests } from "../../../contexts/useRequests";
+import { api } from "../../../services/api";
 import { CloseModalButton } from "../../Buttons/CloseModalButton";
 import { Container } from "./styles";
 
 export function LoginModal({ isOpen, onRequestClose }: any) {
-  function handleLogin(e: FormEvent) {}
+  const [loginUser, setLoginUser] = useState<any>({});
+  const { setLoggedOng } = useRequests();
+
+  function handleLogin(e: FormEvent) {
+    e.preventDefault();
+
+    toast.promise(api.post("/login", { ...loginUser }), {
+      loading: "Entrando...",
+      success: (res) => {
+        sessionStorage.setItem("ong", JSON.stringify(res.data));
+        setTimeout(() => window.location.reload(), 200);
+        return "Seja bem vindo!";
+      },
+      error: (err) => err.response.data,
+    });
+  }
+
   return (
     <Modal
       isOpen={isOpen}
@@ -14,12 +33,28 @@ export function LoginModal({ isOpen, onRequestClose }: any) {
       <CloseModalButton onClick={onRequestClose} />
       <Container onSubmit={handleLogin}>
         <label htmlFor="Login">Login</label>
-        <input type="text" placeholder="Digite o seu email " />
+        <input
+          type="text"
+          placeholder="Digite o seu email "
+          onChange={(e) =>
+            setLoginUser({ ...loginUser, username: e.target.value })
+          }
+        />
 
         <label htmlFor="">Senha</label>
-        <input type="password" placeholder="Digite a sua senha " />
+        <input
+          type="password"
+          placeholder="Digite a sua senha "
+          onChange={(e) =>
+            setLoginUser({ ...loginUser, password: e.target.value })
+          }
+        />
 
-        <button type="submit">Fazer Login</button>
+        <span>
+          <button type="submit">
+            <h1>Fazer Login</h1>
+          </button>
+        </span>
       </Container>
     </Modal>
   );
