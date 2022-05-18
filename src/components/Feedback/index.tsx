@@ -3,8 +3,6 @@ import { api } from "../../services/api";
 
 import { useEffect, useState } from "react";
 import Slider from "react-slick";
-import setaDireitaImg from "../../assets/setaDireita.svg";
-import setaEsquerdaImg from "../../assets/setaEsquerda.svg";
 
 export function Feedback() {
   const [feedbacks, setFeedbacks] = useState<any>([]);
