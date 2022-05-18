@@ -89,7 +89,6 @@ export function RegisterModal({ isOpen, onRequestClose }: ModalProps) {
           onChange={(e) =>
             setRegisterOng({ ...registerOng, description: e.target.value })
           }
-          maxLength={300}
         />
         <Actions>
           <Button className="modalButtons" type="submit">
