@@ -8,7 +8,7 @@ import { Button } from "../../Buttons/Button";
 import { PhotosUpload } from "../../../Helper";
 import { ModalProps } from "../../../shared/models";
 import { useRequests } from "../../../contexts/useRequests";
-import { FormEvent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { VacancyCard } from "../../Vacancy/VacancyCard";
 import { Textarea } from "../../Inputs/Textarea";
 import { CloseModalButton } from "../../Buttons/CloseModalButton";
@@ -16,8 +16,9 @@ import { TelInput } from "../../Inputs/TelInput";
 import { CNPJInput } from "../../Inputs/CNPJInput";
 import { EmailInput } from "../../Inputs/EmailInput";
 import { SenhaInput } from "../../Inputs/SenhaInput";
-import { api, jsonServer } from "../../../services/api";
+import { api } from "../../../services/api";
 import { NewVacancyModal } from "../NewVacancyModal";
+import toast from "react-hot-toast";
 
 export function ProfileModal({ isOpen, onRequestClose }: ModalProps) {
   const { loggedOng, editOng } = useRequests();
@@ -60,21 +61,29 @@ export function ProfileModal({ isOpen, onRequestClose }: ModalProps) {
     formData.append("ong", JSON.stringify(data));
 
     await editOng(formData);
-
-    window.location.reload();
   }
 
   const [vagasLoggedOng, setVagasLoggedOng] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    if (loggedOng) {
-      api
-        .get(`/ongVacancies/${loggedOng.id}`)
-        .then((res) => setVagasLoggedOng(res.data));
-    }
+    api.get(`/ongVacancies`).then((res) => {
+      setVagasLoggedOng(res.data);
+    });
   }, []);
 
+  function handleLogout() {
+    toast.promise(api.get("ongs/logout"), {
+      loading: "Saindo...",
+      success: (res) => {
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
+        return "Logout feito!";
+      },
+      error: "Erro ",
+    });
+  }
   // if (isLoading) {
   //   return <p>carregando</p>;
   // }
@@ -138,15 +147,27 @@ export function ProfileModal({ isOpen, onRequestClose }: ModalProps) {
           >
             <img src={editImg} alt="" />
           </button>
+
+          <Button
+            onClick={handleLogout}
+            style={{ padding: " 0 10px", fontSize: "20px" }}
+          >
+            Sair
+          </Button>
         </div>
 
         <Grid>
-          <CNPJInput disabled={isDisabled} defaultValue={loggedOng.cnpj} />
+          <CNPJInput disabled={true} defaultValue={loggedOng.cnpj} />
 
           <TelInput disabled={isDisabled} defaultValue={loggedOng.tel} />
           <EmailInput disabled={isDisabled} defaultValue={loggedOng.email} />
-
-          <SenhaInput disabled={isDisabled} defaultValue={loggedOng.senha} />
+          {!isDisabled && (
+            <SenhaInput
+              disabled={isDisabled}
+              defaultValue={""}
+              placeholder="Digite a sua senha para salvar"
+            />
+          )}
         </Grid>
 
         <Textarea disabled={isDisabled} defaultValue={loggedOng.descricao} />
@@ -167,6 +188,7 @@ export function ProfileModal({ isOpen, onRequestClose }: ModalProps) {
             <img src={addImg} alt="" />{" "}
           </button>
         </span>
+
         <VacancyCard vagas={vagasLoggedOng} sizeType="profileModal" />
         <NewVacancyModal
           isOpen={isNewVacancyModalOpen}
