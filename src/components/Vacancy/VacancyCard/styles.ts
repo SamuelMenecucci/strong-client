@@ -18,7 +18,7 @@ export const Content = styled.div<ContentProps>`
 
   display: flex;
   align-items: center;
-  justify-content: left;
+  justify-content: center;
 
   padding: 20px 20px;
 
@@ -54,6 +54,7 @@ export const Content = styled.div<ContentProps>`
       border-image: linear-gradient(to right, #b224ef, #7579ff) 1;
 
       margin-bottom: 10px;
+      text-align: center;
     }
 
     p {

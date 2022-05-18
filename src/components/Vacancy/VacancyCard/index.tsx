@@ -30,10 +30,6 @@ export function VacancyCard({ vagas, sizeType }: VacancyCardProps) {
             sizeType={sizeType || ""}
             onClick={() => handleOpenVacancyDetailsModal(element)}
           >
-            <span>
-              <img src={require("../../../assets/user.png")} alt="" />
-            </span>
-
             <div className="info">
               <h1>{element.titulo}</h1>
               <p>{element.tag}</p>
