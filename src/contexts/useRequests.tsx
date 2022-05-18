@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { api } from "../services/api";
 import { OngType } from "../shared/models";
@@ -6,36 +6,26 @@ import { OngType } from "../shared/models";
 const RequestsContext = createContext<any>({});
 
 export function RequestsProvider({ children }: any) {
-  const [loggedOng, setLoggedOng] = useState(() => {
-    const isLogged = sessionStorage.getItem("ong");
+  const [loggedOng, setLoggedOng] = useState("");
 
-    if (isLogged) {
-      return JSON.parse(isLogged);
-    }
+  async function loadOng() {
+    let result = await api.get("/ongs/getOng");
 
-    return "";
-  });
+    setLoggedOng(result.data);
+  }
+
+  useEffect(() => {
+    loadOng();
+  }, []);
 
   const [feedbacks, setFeedbacks] = useState<any>([]);
 
   const [vagas, setVagas] = useState([]);
 
   async function createOng(data: OngType) {
-    // api
-    //   .post("createOng", { ...data })
-    //   .then((res) => {
-    //     toast.success("Criado!");
-    //     sessionStorage.setItem("ong", JSON.stringify(res.data));
-    //     window.location.href = "/";
-    //   })
-    //   .catch((err) => {
-    //     toast.error(err.response.data);
-    //   });
-
-    toast.promise(api.post("createOng", { ...data }), {
+    toast.promise(api.post("/ongs/createOng", { ...data }), {
       loading: "Salvando...",
       success: (res) => {
-        sessionStorage.setItem("ong", JSON.stringify(res.data));
         setTimeout(() => {
           window.location.href = "/";
         }, 1000);
@@ -47,13 +37,27 @@ export function RequestsProvider({ children }: any) {
 
   async function editOng(data: any) {
     console.log(data);
-    const result = await api.put("editOng", data, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-    });
 
-    sessionStorage.setItem("ong", JSON.stringify(result.data));
+    toast.promise(
+      api.put("ongs/editOng", data, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      }),
+      {
+        loading: "Salvando alterações...",
+        success: (res) => {
+          setTimeout(() => {
+            window.location.reload();
+          });
+
+          // sessionStorage.setItem("ong", JSON.stringify(res.data));
+
+          return "Alterações salvas!";
+        },
+        error: (err) => err.response.data,
+      }
+    );
   }
 
   return (
