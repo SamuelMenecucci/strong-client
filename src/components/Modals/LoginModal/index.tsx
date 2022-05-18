@@ -13,10 +13,10 @@ export function LoginModal({ isOpen, onRequestClose }: any) {
   function handleLogin(e: FormEvent) {
     e.preventDefault();
 
-    toast.promise(api.post("/login", { ...loginUser }), {
+    toast.promise(api.post("ongs/login", { ...loginUser }), {
       loading: "Entrando...",
       success: (res) => {
-        sessionStorage.setItem("ong", JSON.stringify(res.data));
+        // sessionStorage.setItem("ong", JSON.stringify(res.data));
         setTimeout(() => window.location.reload(), 200);
         return "Seja bem vindo!";
       },
