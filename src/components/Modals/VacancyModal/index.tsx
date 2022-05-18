@@ -15,6 +15,7 @@ import { api } from "../../../services/api";
 import { Button } from "../../Buttons/Button";
 import { NewVacancyModal } from "../NewVacancyModal";
 import { NewFeedback } from "../NewFeedbackModal";
+import toast from "react-hot-toast";
 
 export function VacancyModal({ isOpen, onRequestClose, vaga }: any) {
   const [isDisabled, setIsDisabled] = useState(true);
@@ -40,11 +41,38 @@ export function VacancyModal({ isOpen, onRequestClose, vaga }: any) {
     e.preventDefault();
     let { tituloVaga, descricaoVaga } = document.forms["editVacancy"];
 
+    console.log(tituloVaga);
+
+    if (!tituloVaga.value || !descricaoVaga.value)
+      return toast.error("Preencha todos os campos!");
+
+    if (tags.length == 0)
+      return toast.error("Selecione ao menos uma tag para a vaga!");
+
+    let formatTag = [];
+    let formatVaga = {};
+
+    let contador = tags.reduce((acc: any, elemento: any) => {
+      if (acc[elemento]) {
+        acc[elemento] += 1;
+      } else acc[elemento] = 1;
+
+      return acc;
+    }, {});
+
+    for (let element in contador) {
+      if (contador[element] == 1 || contador[element] % 2 == 1) {
+        formatTag.push(element);
+      }
+    }
+
+    formatVaga = { ...vaga, tag: formatTag };
+
     api
       .put("/editVacancy", {
         titulo: tituloVaga.value,
         descricao: descricaoVaga.value,
-        tags,
+        tags: formatTag,
         id: vaga.vagaid,
       })
       .then((res) => window.location.reload());
