@@ -13,38 +13,38 @@ export function TagSelector({
           <img src={arrowDownImg} alt="" />
         </summary>
         <div className="item">
-          <label htmlFor="">
-            <input type="checkbox" value="Javascript" id="Javascript" />
+          <label htmlFor="Javascript">
+            <input type="checkbox" value=" Javascript" id="Javascript" />
             Javascript
           </label>
 
-          <label htmlFor="">
-            <input type="checkbox" value="CSS" id="CSS" />
+          <label htmlFor="CSS">
+            <input type="checkbox" value=" CSS" id="CSS" />
             CSS
           </label>
 
-          <label htmlFor="">
-            <input type="checkbox" value="HTML" id="HTML" />
+          <label htmlFor="HTML">
+            <input type="checkbox" value=" HTML" id="HTML" />
             HTML
           </label>
 
-          <label htmlFor="">
-            <input type="checkbox" value="Python" id="Python" />
+          <label htmlFor="Python">
+            <input type="checkbox" value=" Python" id="Python" />
             Python
           </label>
 
-          <label htmlFor="">
-            <input type="checkbox" value="Social Mídia" id="Mídia" />
+          <label htmlFor="Mídia">
+            <input type="checkbox" value=" Social Mídia" id="Mídia" />
             Social Mídia
           </label>
 
-          <label htmlFor="">
-            <input type="checkbox" value="Banco de Dados" id="Banco" />
+          <label htmlFor="Banco">
+            <input type="checkbox" value=" Banco de Dados" id="Banco" />
             Banco de Dados
           </label>
 
-          <label htmlFor="">
-            <input type="checkbox" value="Outro" id="Outro" />
+          <label htmlFor="Outro">
+            <input type="checkbox" value=" Outro" id="Outro" />
             Outro
           </label>
         </div>
