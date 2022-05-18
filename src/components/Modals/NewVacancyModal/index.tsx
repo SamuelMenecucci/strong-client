@@ -1,4 +1,5 @@
 import { FormEvent, useState } from "react";
+import toast from "react-hot-toast";
 import ReactModal from "react-modal";
 import { useRequests } from "../../../contexts/useRequests";
 import { api } from "../../../services/api";
@@ -20,7 +21,13 @@ export function NewVacancyModal({ isOpen, onRequestClose }: any) {
   function handleNovaVaga(e: FormEvent) {
     e.preventDefault();
 
-    let formatTag = [];
+    if (!vaga.titulo || !vaga.descricao)
+      return toast.error("Preencha todos os campos!");
+
+    if (vaga.tag.length == 0)
+      return toast.error("Selecione ao menos uma tag para a vaga!");
+
+    let formatTag: any = [];
     let formatVaga = {};
 
     let contador = vaga.tag.reduce((acc: any, elemento: any) => {
