@@ -23,6 +23,9 @@ export function App() {
             <Route path="/home" exact component={Presentation} />
             <Route path="/feedbacks" exact component={Feedback} />
             <Route path="/vacancies" exact component={Vacancy} />
+            <Route path="/aboutUs" exact>
+              <Presentation title="Somos assim, como você" img="criadoresImg" />
+            </Route>
           </Layout>
         </Switch>
       </BrowserRouter>

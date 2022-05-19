@@ -58,7 +58,12 @@ export function Header() {
         >
           Feedback
         </a>
-        <a href="/">Sobre nós</a>
+        <a
+          href="/aboutus"
+          className={currentPage.includes("/aboutus") ? "active" : undefined}
+        >
+          Sobre nós
+        </a>
 
         {loggedOng ? (
           <Button
