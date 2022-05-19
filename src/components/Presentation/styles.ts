@@ -32,29 +32,14 @@ export const Container = styled.div`
       margin-top: 50px;
     }
 
-    /* button {
-      width: 318px;
-      padding: 16px 50px;
-      border-radius: 16px;
-
-      margin-top: 50px;
-
-      background: linear-gradient(to right, #b224ef, #7579ff, #7579ff);
-      border: none;
-
-      font-size: 24px;
-      color: #fff;
-
-      display: flex;
-      align-items: center;
-      justify-content: center; */
-
     img {
       margin-left: 10px;
     }
-    /* } */
   }
 
   .home-img {
+    img {
+      width: 100%;
+    }
   }
 `;
