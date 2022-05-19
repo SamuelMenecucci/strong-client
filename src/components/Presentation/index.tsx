@@ -1,12 +1,18 @@
 import { Container } from "./styles";
 import homeImg from "../../assets/home-edit.png";
+import criadoresImg from "../../assets/criadores.svg";
 import buttonImg from "../../assets/arrow-circle-right.svg";
 import { useState } from "react";
 import { RegisterModal } from "../Modals/RegisterModal";
 import { Button } from ".././Buttons/Button";
 import { useRequests } from "../../contexts/useRequests";
 
-export function Presentation() {
+type PresentationProps = {
+  img: string;
+  title: string;
+};
+
+export function Presentation({ title, img }: PresentationProps) {
   const [isRegisterModalOpen, setIsRegisterModalOpen] = useState(false);
 
   const { loggedOng } = useRequests();
@@ -21,7 +27,7 @@ export function Presentation() {
   return (
     <Container>
       <div className="be-a-volunteer">
-        <h1>Seja um voluntário</h1>
+        <h1> {title || "Seja um voluntário"}</h1>
         <p>
           StrONG é uma aplicação que não se refere a força física, mas sim ao
           conceito da inércia que diz que um corpo irá sempre permanecer em
@@ -38,7 +44,7 @@ export function Presentation() {
       </div>
 
       <div className="home-img">
-        <img src={homeImg} alt="" />
+        <img src={img ? criadoresImg : homeImg} alt="" />
       </div>
 
       <RegisterModal
