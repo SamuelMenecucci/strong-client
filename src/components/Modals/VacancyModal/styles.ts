@@ -46,7 +46,7 @@ export const OngInfo = styled.div`
 
   h1 {
     margin-left: 17px;
-    word-break: break-all;
+    word-break: normal;
   }
 `;
 

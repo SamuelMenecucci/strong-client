@@ -10,7 +10,7 @@ export function Search() {
         name="filter"
       />
       <button type="submit"></button>
-      <img src={searchImg} alt="" />
+      {/* <img src={searchImg} alt="" /> */}
     </Container>
   );
 }
