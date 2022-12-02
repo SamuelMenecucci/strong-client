@@ -40,11 +40,10 @@ export function VacancyModal({ isOpen, onRequestClose, vaga }: any) {
     if (!tituloVaga.value || !descricaoVaga.value)
       return toast.error("Preencha todos os campos!");
 
-    if (tags.length == 0)
+    if (tags.length === 0)
       return toast.error("Selecione ao menos uma tag para a vaga!");
 
     let formatTag = [];
-    let formatVaga = {};
 
     let contador = tags.reduce((acc: any, elemento: any) => {
       if (acc[elemento]) {
@@ -55,12 +54,10 @@ export function VacancyModal({ isOpen, onRequestClose, vaga }: any) {
     }, {});
 
     for (let element in contador) {
-      if (contador[element] == 1 || contador[element] % 2 == 1) {
+      if (contador[element] === 1 || contador[element] % 2 === 1) {
         formatTag.push(element);
       }
     }
-
-    formatVaga = { ...vaga, tag: formatTag };
 
     api
       .put("/editVacancy", {
@@ -102,7 +99,7 @@ export function VacancyModal({ isOpen, onRequestClose, vaga }: any) {
             <TagSelector onChange={(e) => setTags([...tags, e.target.value])} />
           )}
 
-          {vaga.ongid == loggedOng.id && (
+          {vaga.ongid === loggedOng.id && (
             <button
               style={{ background: "transparent", border: "none" }}
               onClick={handleSetDisabled}

@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import searchImg from "../../assets/search.svg";
 
 export const Container = styled.div`
   width: 1300px;

@@ -1,4 +1,3 @@
-import searchImg from "../../../assets/filtro.svg";
 import { Container } from "./styles";
 
 export function Search() {
