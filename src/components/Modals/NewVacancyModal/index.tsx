@@ -46,9 +46,21 @@ export function NewVacancyModal({ isOpen, onRequestClose }: any) {
 
     formatVaga = { ...vaga, tag: formatTag };
 
-    api
-      .post("/newVacancy", { vaga: formatVaga })
-      .then((res) => window.location.reload());
+    toast.promise(api.post("/newVacancy", { vaga: formatVaga }), {
+      loading: "Criando vaga",
+      success: (res) => {
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000);
+
+        return "Vaga criada com sucesso!";
+      },
+      error: (err) => "Problema ao criar a vaga. Tente novamente",
+    });
+
+    // api
+    //   .post("/newVacancy", { vaga: formatVaga })
+    //   .then((res) => window.location.reload());
   }
 
   return (
