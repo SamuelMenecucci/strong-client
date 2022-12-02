@@ -24,10 +24,11 @@ export function Presentation({ title, img }: PresentationProps) {
   function handleCloseRegisterModal() {
     setIsRegisterModalOpen(false);
   }
+
   return (
     <Container>
       <div className="be-a-volunteer">
-        <h1> {title || "Seja um voluntário"}</h1>
+        <h1> {title || "Para Voluntário ou Ong, seja StrONG"}</h1>
         <p>
           StrONG é uma aplicação que não se refere a força física, mas sim ao
           conceito da inércia que diz que um corpo irá sempre permanecer em
@@ -36,6 +37,11 @@ export function Presentation({ title, img }: PresentationProps) {
           precisam de um empurrãozinho, e a força está atrelada aos
           (Voluntários) que solucionam os respectivos problemas das ONGs.
         </p>
+
+        <div className="home-img mobile">
+          <img src={img ? criadoresImg : homeImg} alt="" />
+        </div>
+
         {!loggedOng && (
           <Button id="register" onClick={handleOpenRegisterModal}>
             Cadastre-se <img src={buttonImg} alt="" />
@@ -43,7 +49,7 @@ export function Presentation({ title, img }: PresentationProps) {
         )}
       </div>
 
-      <div className="home-img">
+      <div className="home-img desktop">
         <img src={img ? criadoresImg : homeImg} alt="" />
       </div>
 
