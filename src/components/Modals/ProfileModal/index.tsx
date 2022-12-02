@@ -141,19 +141,21 @@ export function ProfileModal({ isOpen, onRequestClose }: ModalProps) {
             )}
           </span>
 
-          <button
-            style={{ background: "transparent", border: "none" }}
-            onClick={handleSetDisabled}
-          >
-            <img src={editImg} alt="" />
-          </button>
+          <span className="actions">
+            <button
+              style={{ background: "transparent", border: "none" }}
+              onClick={handleSetDisabled}
+            >
+              <img src={editImg} alt="" />
+            </button>
 
-          <Button
-            onClick={handleLogout}
-            style={{ padding: " 0 10px", fontSize: "20px" }}
-          >
-            Sair
-          </Button>
+            <Button
+              onClick={handleLogout}
+              style={{ padding: " 0 10px", fontSize: "20px" }}
+            >
+              Sair
+            </Button>
+          </span>
         </div>
 
         <Grid>
