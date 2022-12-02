@@ -29,6 +29,10 @@ export const Flex = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: 780px) {
+    flex-direction: column;
+  }
 `;
 
 export const OngInfo = styled.div`
@@ -52,6 +56,7 @@ export const OngInfo = styled.div`
 
 export const OngContacts = styled.div`
   width: 340px;
+  margin: 0 auto;
 
   span {
     justify-content: left;
@@ -63,6 +68,15 @@ export const OngContacts = styled.div`
     }
   }
 
-  h1 {
+  @media (max-width: 780px) {
+    margin-top: 20px;
+
+    span {
+      img {
+        width: 20px;
+        height: 20px;
+        margin-right: unset;
+      }
+    }
   }
 `;
