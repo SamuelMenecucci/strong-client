@@ -1,4 +1,4 @@
-import { Container, Info, Text } from "./styles";
+import { Container, Info, SliderContainer, Text } from "./styles";
 import { api } from "../../services/api";
 
 import { useEffect, useState } from "react";
@@ -9,18 +9,23 @@ export function Feedback() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    api.get("/getFeedbacks").then((res) => {
-      setFeedbacks(res.data);
-      setIsLoading(false);
-    });
+    api
+      .get("/getFeedbacks")
+      .then((res) => {
+        setFeedbacks(res.data);
+        setIsLoading(false);
+      })
+      .catch((err) => alert(err.message));
   }, []);
 
+  const screenWidth = window.screen.width;
   let settings = {
     infinite: true,
-    slidesToScroll: 4,
-    slidesToShow: feedbacks.length < 4 ? feedbacks.length : 4,
+    slidesToScroll: screenWidth > 780 ? 4 : 1,
+    slidesToShow:
+      screenWidth > 780 ? (feedbacks.length < 4 ? feedbacks.length : 4) : 1,
     // accessibility: true,
-    dots: true,
+    dots: screenWidth > 780 ? true : false,
     autoplay: true,
     speed: 500,
   };
@@ -40,7 +45,7 @@ export function Feedback() {
     );
 
   return (
-    <div style={{ width: "1500px", margin: "auto" }}>
+    <SliderContainer>
       <Slider {...settings}>
         {feedbacks.map((element: any) => {
           return (
@@ -56,6 +61,6 @@ export function Feedback() {
           );
         })}
       </Slider>
-    </div>
+    </SliderContainer>
   );
 }

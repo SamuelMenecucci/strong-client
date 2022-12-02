@@ -1,15 +1,29 @@
 import styled from "styled-components";
 
+export const SliderContainer = styled.div`
+  width: 1500px;
+  margin: auto;
+
+  @media (max-width: 780px) {
+    width: 100vw;
+  }
+`;
+
 export const Container = styled.div`
   width: 300px;
+  margin: 0 auto;
   height: 550px;
   padding: 27px 21px;
   background: rgba(117, 121, 255, 0.2);
   border-radius: 40px;
   margin-top: 87px;
-  /* box-shadow: 0 4px 22px 0 #434343; */
   position: relative;
   margin-bottom: 40px;
+
+  @media (max-width: 780px) {
+    margin-bottom: 0;
+    margin-top: 30px;
+  }
 `;
 
 export const Text = styled.div`
