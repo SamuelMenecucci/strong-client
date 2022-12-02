@@ -41,8 +41,6 @@ export function VacancyModal({ isOpen, onRequestClose, vaga }: any) {
     e.preventDefault();
     let { tituloVaga, descricaoVaga } = document.forms["editVacancy"];
 
-    console.log(tituloVaga);
-
     if (!tituloVaga.value || !descricaoVaga.value)
       return toast.error("Preencha todos os campos!");
 
@@ -103,7 +101,7 @@ export function VacancyModal({ isOpen, onRequestClose, vaga }: any) {
 
         <span>
           {isDisabled ? (
-            <h1> {vaga.tag}</h1>
+            <h1>{vaga.tag}</h1>
           ) : (
             <TagSelector onChange={(e) => setTags([...tags, e.target.value])} />
           )}
@@ -120,7 +118,7 @@ export function VacancyModal({ isOpen, onRequestClose, vaga }: any) {
 
         <TextareaInput
           id="descricaoVaga"
-          defaultValue={vaga.descricao}
+          defaultValue={vaga.descricaovaga}
           disabled={isDisabled}
         />
 
@@ -131,34 +129,14 @@ export function VacancyModal({ isOpen, onRequestClose, vaga }: any) {
           </OngInfo>
 
           <OngContacts>
-            {/* {isDisabled ? ( */}
-            <>
-              <span className="tel">
-                <img src={callImg} alt="" />
-                <h1>{vaga.tel}</h1>
-              </span>
-              <span className="email">
-                <img src={emailImg} alt="" />
-                <h1>{vaga.email}</h1>
-              </span>
-            </>
-            {/* ) : (
-              <>
-                <TelInput
-                  style={{
-                    width: "200px",
-                    height: "37px",
-                    marginBottom: "28px",
-                  }}
-                  defaultValue={vaga.tel}
-                />
-                <EmailInput
-                  style={{ height: "37px" }}
-                  defaultValue={vaga.email}
-                />
-                ,
-              </> */}
-            {/* )} */}
+            <span className="tel">
+              <img src={callImg} alt="" />
+              <h1>{vaga.tel}</h1>
+            </span>
+            <span className="email">
+              <img src={emailImg} alt="" />
+              <h1>{vaga.email}</h1>
+            </span>
           </OngContacts>
         </Flex>
 
