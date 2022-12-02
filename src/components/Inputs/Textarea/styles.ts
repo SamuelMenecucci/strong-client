@@ -15,6 +15,11 @@ export const TextareaInput = styled.textarea`
 
   font-size: 22px;
 
+  @media (max-width: 780px) {
+    height: 105px;
+    margin-bottom: 20px;
+  }
+
   ::placeholder {
     color: rgba(0, 0, 0, 0.3);
     font-size: 18px;

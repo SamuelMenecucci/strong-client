@@ -9,11 +9,28 @@ export const Container = styled.div`
 
   max-width: 1200px;
 
-  .be-a-volunteer {
-    /* width: 541px; */
+  @media (max-width: 780px) {
+    max-width: initial;
+    display: initial;
 
+    .be-a-volunteer {
+      h1 {
+        font-size: 46px !important;
+        margin: 20px auto !important;
+
+        line-height: 48px !important;
+      }
+
+      p {
+        position: absolute;
+        padding: 5px;
+      }
+    }
+  }
+  .be-a-volunteer {
+    padding: 0 28px;
     h1 {
-      font-size: 96px;
+      font-size: 56px;
       line-height: 96px;
 
       color: var(--primary-color);
@@ -40,6 +57,26 @@ export const Container = styled.div`
   .home-img {
     img {
       width: 100%;
+    }
+  }
+  .home-img.mobile {
+    display: none;
+  }
+
+  @media (max-width: 780px) {
+    .home-img.mobile {
+      display: initial;
+      img {
+        width: 80%;
+      }
+    }
+
+    .home-img.desktop {
+      display: none;
+
+      img {
+        width: 100%;
+      }
     }
   }
 `;

@@ -10,6 +10,11 @@ export const Container = styled.form`
   margin: 0 auto;
   margin-bottom: 60px;
 
+  @media (max-width: 780px) {
+    max-width: initial;
+    width: 100%;
+  }
+
   img {
     margin-left: 10px;
   }

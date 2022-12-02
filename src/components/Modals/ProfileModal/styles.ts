@@ -6,10 +6,23 @@ export const ProfileForm = styled.form`
     align-items: center;
     justify-content: space-between;
     margin-bottom: 15px;
+    @media (max-width: 780px) {
+      .actions {
+        position: absolute;
+        /* z-index: 5; */
+        top: 50px;
+        right: 5px;
+      }
+    }
 
     span {
       display: flex;
       align-items: center;
+
+      @media (max-width: 780px) {
+        flex-direction: column;
+        justify-content: center;
+      }
     }
 
     #profileTag {
@@ -35,6 +48,10 @@ export const Grid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: 33px;
+
+  @media (max-width: 780px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 export const Actions = styled.div`
@@ -58,4 +75,5 @@ export const MyVacancies = styled.div`
       margin-bottom: initial;
     }
   }
+  margin: auto;
 `;

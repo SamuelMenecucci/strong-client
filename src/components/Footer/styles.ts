@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import footerImg from "../../assets/footerBackground.svg";
+import footerMobileImg from "../../assets/footerMobile.svg";
 
 export const Container = styled.footer`
   background: url(${footerImg}) no-repeat center center;
@@ -12,6 +13,13 @@ export const Container = styled.footer`
   position: relative;
 
   min-width: 1200px;
+
+  @media (max-width: 780px) {
+    min-width: initial;
+    width: 100vw;
+    background: url(${footerMobileImg}) no-repeat center center;
+    background-size: 100%;
+  }
 
   p {
     text-align: center;
@@ -29,6 +37,10 @@ export const Links = styled.div`
   position: absolute;
   bottom: 22px;
   right: 31px;
+
+  @media (max-width: 780px) {
+    display: none;
+  }
 
   a {
     & + a {

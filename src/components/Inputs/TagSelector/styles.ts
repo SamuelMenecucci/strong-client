@@ -4,6 +4,12 @@ export const TagSelectorStyle = styled.div`
   details {
     width: 231px;
 
+    @media (max-width: 780px) {
+      width: 100%;
+
+      margin: 12px auto;
+    }
+
     summary {
       background: linear-gradient(to right, #b224ef, #7579ff, #7579ff);
       border-radius: 16px;

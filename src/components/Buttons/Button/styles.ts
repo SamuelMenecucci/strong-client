@@ -9,6 +9,10 @@ export const ButtonComponent = styled.button`
   border: none;
 
   font-size: 24px;
+
+  @media (max-width: 780px) {
+    font-size: 16px;
+  }
   color: #fff;
 
   display: flex;

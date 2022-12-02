@@ -8,6 +8,10 @@ export const Grid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   column-gap: 33px;
+
+  @media (max-width: 760px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 export const Actions = styled.div`
@@ -18,5 +22,9 @@ export const Actions = styled.div`
   .modalButtons {
     width: 260px;
     padding: 6px 10px;
+
+    @media (max-width: 780px) {
+      padding: 3px 5px;
+    }
   }
 `;
