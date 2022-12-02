@@ -1,5 +1,6 @@
 import { Container, Content, Links } from "./styles";
 import logoImg from "../../assets/logo.svg";
+import menuImg from "../../assets/menu.svg";
 import { Button } from "../Buttons/Button";
 import profileImg from "../../assets/profile-circle.svg";
 import { useState } from "react";
@@ -30,13 +31,21 @@ export function Header() {
     setIsLoginModalOpen(false);
   }
 
+  function hideMobileMenu() {
+    const details = document.querySelector(".mobileMenu") as HTMLDetailsElement;
+
+    details.open = false;
+  }
+
   return (
     <Container>
       <Content>
-        <img src={logoImg} alt="" />
-        <span>
-          str<b>ONG</b>
-        </span>
+        <a href="/" style={{ textDecoration: "none" }}>
+          <img src={logoImg} alt="" />
+          <span>
+            str<b>ONG</b>
+          </span>
+        </a>
       </Content>
 
       <Links>
@@ -93,6 +102,33 @@ export function Header() {
         isOpen={isLoginModalOpen}
         onRequestClose={handleCloseLoginModal}
       />
+
+      <details className="mobileMenu">
+        <summary>
+          <img src={menuImg} />
+        </summary>
+        <div className="menuList">
+          <button onClick={hideMobileMenu}>
+            <img src={menuImg} />
+          </button>
+
+          {loggedOng ? (
+            <Button className="profile" onClick={handleOpenProfileModal}>
+              <img src={profileImg} alt="" />
+            </Button>
+          ) : (
+            <Button className="profile" onClick={handleOpenLoginModal}>
+              <img src={profileImg} alt="" />
+            </Button>
+          )}
+          <div className="itens">
+            <a href="/home">Home</a>
+            <a href="/vacancies">Vagas</a>
+            <a href="/feedbacks">Feedback</a>
+            <a href="/aboutus">Sobre nós</a>
+          </div>
+        </div>
+      </details>
     </Container>
   );
 }
