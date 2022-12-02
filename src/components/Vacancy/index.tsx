@@ -38,8 +38,6 @@ export function Vacancy() {
   //   );
   // }
 
-  console.log("vagas aqui caraui", vagas);
-
   return (
     <Container>
       <Search />

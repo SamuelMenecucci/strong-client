@@ -4,16 +4,12 @@ import { TextareaInput } from "../../Inputs/Textarea/styles";
 import { CloseModalButton } from "../../Buttons/CloseModalButton";
 import { FormEvent, useState } from "react";
 import editImg from "../../../assets/editarIcon.svg";
-import userPicture from "../../../assets/profileInput.svg";
-import { TelInput } from "../../Inputs/TelInput";
-import { EmailInput } from "../../Inputs/EmailInput";
 import emailImg from "../../../assets/email.svg";
 import callImg from "../../../assets/call.svg";
 import { TagSelector } from "../../Inputs/TagSelector";
 import { useRequests } from "../../../contexts/useRequests";
 import { api } from "../../../services/api";
 import { Button } from "../../Buttons/Button";
-import { NewVacancyModal } from "../NewVacancyModal";
 import { NewFeedback } from "../NewFeedbackModal";
 import toast from "react-hot-toast";
 
