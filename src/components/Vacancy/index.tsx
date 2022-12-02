@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { Search } from "../Inputs/Search";
@@ -38,6 +37,8 @@ export function Vacancy() {
   //     </h1>
   //   );
   // }
+
+  console.log("vagas aqui caraui", vagas);
 
   return (
     <Container>
