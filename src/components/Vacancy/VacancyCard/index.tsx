@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { VacancyModal } from "../../Modals/VacancyModal";
-import { Cards, Content } from "./styles";
+import { Container, Content } from "./styles";
+import Slider from "react-slick";
 
 type VacancyCardProps = {
   vagas: any;
@@ -22,27 +23,43 @@ export function VacancyCard({ vagas, sizeType }: VacancyCardProps) {
     setIsVacancyDetailsModalOpen(false);
   }
 
+  const screenWidth = window.screen.width;
+
+  let settings = {
+    infinite: true,
+    slidesToScroll: screenWidth > 780 ? 3 : 1,
+    slidesToShow: screenWidth > 780 ? (vagas.length < 3 ? 1 : 3) : 1,
+    // accessibility: true,
+    dots: screenWidth > 780 ? true : false,
+    autoplay: true,
+    speed: 500,
+  };
+
   return (
-    <Cards sizeType={sizeType || ""}>
-      {vagas.map((element: any) => {
-        return (
-          <Content
-            sizeType={sizeType || ""}
-            onClick={() => handleOpenVacancyDetailsModal(element)}
-          >
-            <div className="info">
-              <h1>{element.titulo}</h1>
-              <p>{element.tag}</p>
-            </div>
-          </Content>
-        );
-      })}
+    <Container>
+      <Slider {...settings}>
+        {vagas.map((element: any) => {
+          return (
+            <>
+              <Content
+                sizeType={sizeType || ""}
+                onClick={() => handleOpenVacancyDetailsModal(element)}
+              >
+                <div className="info">
+                  <h1>{element.titulo}</h1>
+                  <p>{element.tag}</p>
+                </div>
+              </Content>
+            </>
+          );
+        })}
+      </Slider>
 
       <VacancyModal
         isOpen={isVacancyDetailsModalOpen}
         onRequestClose={handleCloseVacancyDetailsModal}
         vaga={vacancyDetails}
       />
-    </Cards>
+    </Container>
   );
 }

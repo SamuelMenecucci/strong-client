@@ -16,6 +16,7 @@ export const Content = styled.div<ContentProps>`
   );
   border-radius: 40px;
 
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -64,9 +65,4 @@ export const Content = styled.div<ContentProps>`
   }
 `;
 
-export const Cards = styled.div<ContentProps>`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: ${({ sizeType }) =>
-    sizeType === "profileModal" ? "20px 10px" : "50px 50px"};
-`;
+export const Container = styled.div``;
