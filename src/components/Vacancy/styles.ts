@@ -5,12 +5,7 @@ export const Container = styled.div`
   width: 1300px;
   margin: 0 auto;
   padding-top: 40px;
-`;
-
-export const Content = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 60px 90px;
-
-  align-items: center;
+  @media (max-width: 780px) {
+    width: 90%;
+  }
 `;

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { Search } from "../Inputs/Search";
-import { Container, Content } from "./styles";
+import { Container } from "./styles";
 import { VacancyCard } from "./VacancyCard";
 
 export function Vacancy() {
