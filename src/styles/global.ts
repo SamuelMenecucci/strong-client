@@ -46,6 +46,11 @@ export const GlobalStyle = createGlobalStyle`
 
             font-size: 22px;
 
+            @media (max-width: 780px) {
+              padding: 3px ;
+              margin-bottom: 20px ;
+            }
+
 
         ::placeholder {
         color: rgba(0, 0, 0, 0.3);
@@ -101,6 +106,13 @@ export const GlobalStyle = createGlobalStyle`
     position: relative ;
   }
 
+  @media (max-width: 760px){
+    .react-registerModal-content {
+      padding: 20px 18px ;
+      height: auto;
+    }
+  }
+
   .react-profileModal-content {
     width: 100%;
     max-width:  950px;
@@ -112,6 +124,11 @@ export const GlobalStyle = createGlobalStyle`
     border: 2px solid var(--purple-color);
 
     position: relative ;
+
+    @media(max-width: 780px){
+      padding: 10px ;
+      width:98% ;
+    }
 
   }
 
@@ -126,6 +143,10 @@ export const GlobalStyle = createGlobalStyle`
     border: 2px solid var(--purple-color);
 
     position: relative ;
+
+    @media(max-width: 780px){
+      padding: 10px
+    }
   }
 
   .react-NewVacancyModal{
@@ -139,6 +160,10 @@ export const GlobalStyle = createGlobalStyle`
     border: 2px solid var(--purple-color);
 
     position: relative ;
+
+    @media(max-width: 780px) {
+      padding:  20px
+    }
   }
 
   .react-newFeedbackModal{
@@ -152,17 +177,23 @@ export const GlobalStyle = createGlobalStyle`
     border: 2px solid var(--purple-color);
 
     position: relative ;
+
+    @media(max-width: 780px) {
+      padding: 10px ;
+    }
   }
 
   .react-login-modal {
-    width: 700px;
-    max-width: 100%;
-    max-width:  950px;
+    max-width: 700px;
     background: linear-gradient(to right, #b224ef, #7579ff, #7579ff);
 
     padding:  30px 77px ;
 
     border-radius:16px ;
     position: relative ;
+
+    @media(max-width: 780px){
+      padding: 20px ;
+    }
   }
 `;
