@@ -36,8 +36,6 @@ export function RequestsProvider({ children }: any) {
   }
 
   async function editOng(data: any) {
-    console.log(data);
-
     toast.promise(
       api.put("ongs/editOng", data, {
         headers: {

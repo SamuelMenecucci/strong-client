@@ -16,8 +16,6 @@ export function Footer() {
     return false;
   });
 
-  console.log(mobile);
-
   return (
     <Container>
       <img
