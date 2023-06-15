@@ -29,11 +29,14 @@ export function Footer() {
             <img src={instagramImg} alt="" />
           </a>
 
-          <a href="/">
+          <a href="https://github.com/samuelmenecucci" target="_blank">
             <img src={gitHubImg} alt="" />
           </a>
 
-          <a href="/">
+          <a
+            href="https://www.linkedin.com/in/samuelmenecucci/"
+            target="_blank"
+          >
             <img src={linkedInImg} alt="" />
           </a>
         </span>
