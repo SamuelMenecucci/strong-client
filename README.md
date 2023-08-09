@@ -31,4 +31,4 @@ Conversely, volunteers can browse through available positions, access detailed i
 
 - **Axios**
 
-- **React Hot Toast
+- **React Hot Toast**
